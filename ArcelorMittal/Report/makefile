@@ -19,7 +19,7 @@ $(MAIN).pdf: $(MAIN).tex $(wildcard *.tex) $(wildcard *.bib)
 	-$(BIB) $(MAIN)
 	$(LATEX) $(MAIN).tex
 	$(LATEX) $(MAIN).tex
-	cp $(OUTDIR)/$(MAIN).pdf  $(MAIN).pdf
+	mv $(OUTDIR)/$(MAIN).pdf  $(MAIN).pdf
 
 # Clean build artifacts
 clean:
