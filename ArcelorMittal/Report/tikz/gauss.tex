@@ -1,0 +1,78 @@
+\documentclass{standalone}
+\usepackage{tikz}
+%\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+\begin{document}
+
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black!55},
+}
+
+% Drawing View
+\tikzset{dimetric2/.style={
+  x={(1cm,0cm)},
+  y={(0cm,1cm)},
+  z={(0cm,0cm)},
+}}
+
+
+\begin{tikzpicture}[dimetric2] 
+      \coordinate (O) at (-0.5,-0.5,0); 
+        \draw[axis] (O) -- ++(0.5,0,0) node[below right] {$x$};
+       \draw[axis] (O) -- ++(0,0.5,0) node[above left] {$y$};
+        %\draw[axis] (O) -- ++(0,0,2.5) node[above] {$z$};
+%\fill[gray!90,opacity=0.2] (0,0,0.5) -- (10,0,0.5) -- (10,10,0.5) -- (0,10,0.5) -- cycle;
+%\fill[gray!50,opacity=0.2] (0,0,-0.5) -- (10,0,-0.5) -- (10,10,-0.5) -- (0,10,-0.5) -- cycle; 
+%\fill[gray!35,opacity=0.2] (0,0,-0.5) -- (10,0,-0.5) -- (10,0,0.5) -- (0,0,0.5) -- cycle; 
+%\fill[gray!65,opacity=0.2] (0,0,-0.5) -- (0,10,-0.5) -- (0,10,0.5) -- (0,0,0.5) -- cycle; 
+%(10,0,-0.5) -- (10,10,-0.5) -- (10,10,0.5) -- (10,0,0.5) -- cycle; 
+%\fill[gray!35,opacity=0.2] (0,10,-0.5) -- (10,10,-0.5) -- (10,10,0.5) -- (0,10,0.5) -- cycle; 
+\draw[thick] (0,0,0) -- (5,0,0);
+\draw[thick] (0,0,0) -- (0,5,0);
+\draw[thick] (5,5,0) -- (0,5,0);
+\draw[thick] (5,5,0) -- (5,0,0);
+
+\draw[thick,dashed] (2.5,0,0) -- (2.5,5,0);
+\draw[thick,dashed,opacity=0.2] (0,0,0) -- (0,5,0);
+\draw[thick,dashed,opacity=0.2] (5,5,0) -- (0,5,0);
+\draw[thick,dashed] (0,2.5,0) -- (5,2.5,0);
+
+\draw[fill=black] (1,1,0) circle (0.1 )node[above] {($\frac{-1}{\sqrt{3}}$,$\frac{-1}{\sqrt{3}}$)};
+\draw[fill=black] (1,4,0) circle (0.1 )node[above] {($\frac{1}{\sqrt{3}}$,$\frac{-1}{\sqrt{3}}$)};
+\draw[fill=black] (4,4,0) circle (0.1)node[above] {($\frac{1}{\sqrt{3}}$,$\frac{1}{\sqrt{3}}$)};
+\draw[fill=black] (4,1,0) circle (0.1 )node[above] {($\frac{-1}{\sqrt{3}}$,$\frac{-1}{\sqrt{3}}$)};
+\draw[fill=black] (2.5,2.5,0) circle (0.05 )node[above right] {(0,0)};
+\draw[fill=black] (0.5,-1,0) circle (0.1 )node[ right] { Gauss Integration points};
+
+
+    
+    
+    
+
+%\draw[load] (10.1,0,{0}) -- (12,0,{0}) node [right] {$N_2$} ;  
+
+%\draw (0,0,-0.5) -- (0,-1.5,-0.5) ;
+%\draw (0,0,0.5) -- (0,-1.5,0.5) ;
+%\draw[dim] (-0,-1,0.5) -- (-0,-1,-0.5) node [midway,left] {$t$} ;
+
+%\draw[thick,dashed,opacity=0.2] (0,3,0) -- (10,3,0);
+%\draw (0,0,-0.5) -- (0,0,-1.5) ;
+%\draw (10,0,-0.5) -- (10,0,-1.5) ;
+%\draw[dim] (0,0,-1) -- (10,0,-1) node [midway,below] {$b$} ;
+
+
+%\draw[thick,dashed,opacity=0.2] (0,3,0) -- (10,3,0);
+%\draw (10,0,-0.5) -- (10,0,-1.5) ;
+%\draw (10,10,-0.5) -- (10,10,-1.5) ;
+%\draw[dim] (10,0,-1) -- (10,10,-1) node [midway,below] {$a$} ;
+
+
+\end{tikzpicture}
+
+
+\end{document}

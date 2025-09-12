@@ -1,0 +1,307 @@
+\documentclass[12pt,twoside]{report}
+%\documentclass[12pt,twoside]{book}
+\usepackage{standalone}
+%\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{\leftmark}
+\fancyfoot{}
+\fancyfoot[CO,CE]{ \thepage}
+\setlength{\headheight}{15pt}
+%\fancyfoot[LO,CE]{Ch : }
+%\fancyfoot[LO,RE]{Author name}
+\usepackage{amssymb}
+\usepackage[backend=biber,
+citestyle=authoryear,
+%citestyle=alphabetic,
+]{biblatex}
+%\usepackage{biblatex}
+%\bibliographystyle{apalike}
+\addbibresource{bib.bib}
+
+%\usepackage{cite}  %To add referce numbers to the file
+%\usepackage[table,xcdraw]{xcolor}  %to include tables with colors
+%\usepackage{tikz}  %for Creating Graphical images
+\usepackage{graphicx} % for inserting Graphics files
+%	\graphicspath{{../images/}}
+\usepackage{subfiles}  % to make use of file tex project feature
+\providecommand{\main}{.}
+\usepackage{comment}  %for inserting comments
+\usepackage{calc}  %for doing arithmatic calculation
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{wrapfig} %to insert figure in a side and wrap text arround it
+%\usepackage{pgfplots}
+\usepackage{amsmath}
+
+\usepackage{multirow}
+\usepackage[toc,page]{appendix}
+\usepackage{subcaption}
+%\usepackage{mwe}
+
+
+
+
+%%%%%%listing
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+
+%%%% verbitm
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{fancyvrb}
+
+
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ %
+ label=\fbox{\color{Black}data.txt},
+ %labelposition=topline,
+}
+
+
+
+
+
+\usepackage{nomencl}
+\makenomenclature
+
+\setlength{\parskip}{1em}
+%\setlength{\parindent}{4em}
+\setlength{\parindent}{0em}
+\setlength{\nomlabelwidth}{2.5cm}  % for nomenclature
+\renewcommand{\baselinestretch}{1.1}
+
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\begin{document}
+
+
+%%%%%listing 
+
+
+%%%%%%verbitm
+
+
+
+
+%\title{Numerical Modeling of vibration of metal strip in Hot-dip Galvanization process }
+%\author{Emayavaramban ELANGO}
+%\date{\today}
+
+%\frontmatter
+
+\begin{titlepage}
+\begin{minipage}{0.45\textwidth}
+\begin{flushleft} 
+\includegraphics[width = 50mm]{images/ECN.png}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.45\textwidth}
+\begin{flushright} 
+\includegraphics[width = 50mm]{images/Uni-logo.png}
+\end{flushright}
+\end{minipage}
+\begin{center}
+\vspace{2.5mm}
+\textsc{\large{\textbf{Master of Science in Applied Mechanics\\ Speciality in Computational Mechanics}}}
+\\
+\vspace{20mm}
+{\large{\textbf{year 2017/2018}}}\\
+\vspace{10mm}
+{\large{\textbf{Master Thesis}}}\\
+\vspace{10mm}
+\large{\textit{Diplome co-authorized by
+Centrale Nantes and University of Nantes}}\\
+\vspace{10mm}
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+\large{Presented by}\\
+\vspace{2mm}
+Emayavaramban ELANGO \\
+\end{center} 
+\end{minipage}
+~
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+\large{Supervised by}\\
+\vspace{2mm}
+Vam Thang Pham, PhD \\
+\end{center}
+\end{minipage}
+
+\vspace{20mm}
+on \today { at Centrale Nantes} \\
+\vspace{10mm}
+TITLE\\
+\vspace{5mm}
+\textbf{2D metal Stip Finite Element modal in Hot-Dip Galvanization Process}\\
+
+\vspace{10mm}
+{\textbf{ENTERPRISE}}
+
+
+\begin{minipage}{0.45\textwidth}
+\begin{flushright}
+\includegraphics[width = 70mm]{images/ArcelorMittal_logo.png}
+\end{flushright} 
+\end{minipage}
+~
+\begin{minipage}{0.45\textwidth}
+\begin{flushleft}
+\textbf{Global R\&D Maizières } \\
+ArcelorMittal Maizières Research \\
+Voie Romaine, BP 30320 \\
+57283 Maizières-lès-Metz\\
+France
+\end{flushleft} 
+\end{minipage}
+\end{center}
+\end{titlepage}
+
+\thispagestyle{empty}
+\chapter*{Acknowledgment}
+I  wish to express my sincere gratitude to my thesis supervisor Mr Vam Thang Pham, for believing in me and providing me with the necessary facilities for the project. It is a great honour to work under his supervision. I would also like to express my gratitude to all the team members of Control and Measurement Department for supporting me.
+
+I would like to express my deepest thanks and sincere appreciation to Prof.Nicolas Chevauegeon for his suggestions. I am very thankful to Prof.Panagiotis KOTRONIS and Prof.Grégory LEGRAIN for their timely replies for all my doubts. I am very glad to spend my Master degree with all the professors of Ecole Centrale De Nantes and for their wisdom.
+
+I would like to express my love and gratitude to my parents, brother and my friends for their kind cooperation and understanding that the thesis is not done in a day. I would also like to thank my fellow interns Maire and Kenji for making my stay more pleasant and I wish them a bright future. 
+ 
+
+
+
+\chapter*{Abstract}
+
+The Main objective of the internship is to create a Finite element program to predict the vibration of a 2D metal strip in the Hot-Dip Galvanization Process. Hot-Dip galvanization is a process to coat molten zinc metal in a steel plate in order to increase the corrosion resistance. For the process of applying the zinc coating, long steel is dipped in a Molten zinc bath and drawn out of the bath and passes between air-knife. Air knife is intended to remove excess zinc by blowing air at very high speed. Excess vibration in the steel plate causes an uneven air blow, which in turn affects the quality of the coating. The vibration can be countered to an extent by placing the electromagnets. The electromagnets operate based on the control algorithms. To create an effective control law, an efficient and accurate numerical method is required to test and validate the control law. Finite element is used as a numerical method since it is very accurate and easy to use. There are quite a few challenges in numerical modelling. The plate is very thin and it is highly stretched. The plate is also axially moving in the upward direction all the time. The Equation of motion is derived using the Hamilton Principle with the help of Euler - Lagrange formulation. Two plate theories are used to develop two distinct plate element. An element called 'PAT' triangle is created using Kirchhoff Plate theory, which is a thin plate theory. This element is C1 continuous and requires complex shape function to implement. Reissner Mindlin plate theory is formulated for both thin and thick plates. 'QUAD4' quadrangle element with 4 nodes is created using this plate theory. QUAD4 is C0 continuous which makes it one of the easiest to implement. For directly solving the dynamic system, a type of Newmark time integration algorithm is implemented.  Prefactorization technique is used to make it ten times faster than the regular algorithm. The FEM program is also capable of proving the FE matrices in space-state form so, that it can be solved directly in Simulink. To make the solution process even faster, The modal superposition technique is used. This technique created a reduced model from the high fidelity model. Object-Oriented Programming style is adapted to create a user-friendly interface. Many studies are conducted to evaluate the performance of the Elements. Elaborate mesh dependency study is also conducted.  Using the knowledge from this test, an optimised Mesh is created which performs well in most cases. FEM program is compared with the existing Galerkin method for final evaluation.
+
+%The Hot-Dip galvanisation is the process of coating zinc metal in steel to increase the corrosion resistance of the metal.In a Hot-Dip galvanization process, long steel plate is continuously moved in a line. The plate is dipped in molten zinc bath and air knife controls the thickness of the zinc coating. Vibration in plates affects the quality of the coating so, electromagnets are used to control vibration. To effectively create a better control algorithm is needed. Finite Element numerical method is used to predict the behaviour of the control algorithm.  Axially moving plate formulation is developed using Euler - Lagrange formulation. Two separate theories are used to developed (Kirchhoff thin plate theory  and Ressigner Mindlin plate theory). PAT element for Kirchoff plate and QUAD4 element for ressginer mindlin plate theory is used to formulate the finite element. the Finite element matrices are represented in space-state format \textbf{simulink}.QUAD4 elements proven to be more accurate for most of the cases. \\
+
+\textbf{KEYWORDS :} Hot-Dip Galvanization, Kirchhoff plate, Ressigner Mindlin Plate, Axially Moving Material, Finite Element Method
+
+
+
+%The Main objective of the internship is to create a Finite element program to predict the vibration of a 2D metal strip in the Hot-Dip Galvanization Process. Hot-Dip galvanization is a process to coat molten zinc metal in a steel plate in order to increase the corrosion resistance. For the process of applying the zinc coating, long steel is dipped in a Molten zinc bath. The steel strip is continuously moving in the galvanising line.  The steel plate is drawn out of the bath and passes between air-knife. Air knife is intended to remove excess zinc by blowing air at very high speed. Excess vibration in the steel plate causes an uneven air blow, which in turn affects the quality of the coating. The vibration can be countered to an extent by placing the electromagnets. The electromagnets operate based on the control algorithms. To create an effective control law, an efficient and accurate numerical method is required to test and validate the control law. Finite element is used as a numerical method since it is very accurate and easy to use. There are quite a few challenges in numerical modelling. The plate is very thin and it is highly stretched. The plate is also axially moving in the upward direction all the time. The Equation of motion is derived using the Hamilton Principle with the help of Euler - Lagrange formulation. Two plate theories are used to develop two distinct plate element. An element called 'PAT' triangle is created using Kirchhoff Plate theory, which is a thin plate theory. This element is C1 continuous and requires complex shape function to implement. Reissner Mindlin plate theory is formulated for both thin and thick plates. 'QUAD4' quadrangle element with 4 nodes is created using this plate theory. QUAD4 is C0 continuous which makes it one of the easiest to implement. For directly solving the dynamic system, a type of Newmark time integration algorithm is implemented.  Prefactorization technique is used to make it ten times faster than the regular algorithm. The FEM program is also capable of proving the FE matrices in space-state form so, that it can be solved directly in Simulink. To make the solution process even faster, The modal superposition technique is used. This technique created a reduced model from the high fidelity model. Object-Oriented Programming style is adapted to create a user-friendly interface. Many studies are conducted to evaluate the performance of the Elements. For the most cases, QUAD4 element shows good convergence to the analytical solution despite being the simpler one. 'PAT' element performs better only for the transverse distributed load. Elaborate mesh dependency study is also conducted. Mesh density has to be very fine at the boundaries where imposed Dirichlet load is applied, This is the important take away from the mesh dependency test. Using the knowledge from this test, an optimised Mesh is created which performs well in most cases. FEM program is compared with the existing Galerkin method for final evaluation.
+
+
+\tableofcontents
+\listoffigures
+%\listoftables
+\printnomenclature
+
+\nomenclature{$\Omega$}{*** **}
+
+\nomenclature{$\sigma$}{Stress}
+\nomenclature{$\sigma^A$}{Axial stress}
+\nomenclature{$\sigma^S$}{Shear stress}
+\nomenclature{$\sigma^B$}{Bending stress}
+
+\nomenclature{$\epsilon$}{Strain}
+\nomenclature{$\epsilon^A$}{Axial strain}
+\nomenclature{$\epsilon^S$}{Shear strain}
+\nomenclature{$\epsilon^B$}{Bending strain}
+
+\nomenclature{$U$}{Total Potential Energy}
+\nomenclature{$K$}{Total Kinetic Energy}
+\nomenclature{$W$}{External Work}
+
+\nomenclature{$h$}{Thickness}
+\nomenclature{$L$}{Length}
+\nomenclature{$W$}{Width}
+
+\nomenclature{$u_i$}{Displacement component}
+\nomenclature{$u,v,w$}{local displacement component}
+\nomenclature{$\theta_x,\theta_y$}{Rotation of line initially perpendicular to mid plane.}
+\nomenclature{$\phi_x,\phi_y$}{Rotation due to shears $ \epsilon_{13}$,$\epsilon_{23}$}
+
+\nomenclature{$E$}{young's Modulus}
+\nomenclature{$\rho$}{Density}
+\nomenclature{$\nu$}{Poisson's Ratio}
+\nomenclature{$G$}{Shear Modulus}
+\nomenclature{$N_x,N_y,N_xy$}{Membrane stress (axial and shear)}
+\nomenclature{$D$}{Bending Rigidity ** }
+
+\nomenclature{$V_i$}{Line speed}
+\nomenclature{$v$}{Velocity vector}
+
+\nomenclature{$q_1 \cdots q_i$}{Transverse Distributed load}
+
+\nomenclature{$\delta$}{variation **}
+
+%\nomenclature{$Z_ij$}{****}
+
+\nomenclature{$N_i, \overline{N}_i, \overline{\overline{N}}_i$}{FE shape function}
+
+\nomenclature{$\xi,\eta$}{Components of parent coordinate}
+\nomenclature{$L_i$}{Components of area coordinate}
+\nomenclature{$A,A_i$}{Area}
+%\nomenclature{$more in shape fun$}{***}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\mainmatter
+%
+%\chapter{Introduction }
+%\subfile{trialsub1.tex}
+\graphicspath{{intro/}}
+\subfile{intro.tex}
+
+
+%\subfile{trialsub1.tex}
+%\graphicspath{{plate/}}
+\subfile{plate.tex}
+
+%\graphicspath{{FEM/}}
+\subfile{FEM.tex}
+
+
+\subfile{results.tex}
+
+%\subfile{manual.tex}
+
+\subfile{conclusion.tex}
+
+
+\printbibliography[
+heading = bibintoc ,
+title = {Reference}
+]
+
+
+\begin{appendices}
+\subfile{app_A.tex}
+\subfile{app_B.tex}
+
+\end{appendices}
+
+
+
+\end{document}

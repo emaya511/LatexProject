@@ -1,0 +1,25 @@
+rm *.aux
+rm *.bbl
+rm *.bcf
+rm *.blg
+rm *.lof
+rm *.log
+rm *.nlo
+rm *.run.xml
+rm *.toc
+rm *.synctex.gzr
+rm *.pdf
+rm *.ist
+rm *.nls
+rm *.ilg
+rm *.lot
+rm *.dvi
+
+
+rm -r kir
+rm -r FEM
+rm -r intro
+rm -r plate
+
+
+

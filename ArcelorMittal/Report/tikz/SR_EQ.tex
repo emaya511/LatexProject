@@ -1,0 +1,56 @@
+
+\documentclass{standalone}
+%\usepackage[showframe]{geometry}
+%\usepackage{layout}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+%width=12cm,height=7cm
+%\geometry{
+%paperwidth = 3cm,
+%paperheight = 7cm,
+%margin = 0.5cm
+%}
+
+
+\begin{document}
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black},
+}
+
+% Drawing View
+\tikzset{dimetric2/.style={
+  x={(1cm,0cm)},
+  y={(0cm,1cm)},
+  z={(0.5cm,0.5cm)},
+}}
+
+
+
+\begin{tikzpicture}[dimetric2,scale=1]
+
+% \coordinate (O) at (0,-6,0); 
+%        \draw[axis] (O) -- ++(0.5,0,0) node[ right] {$x$};
+%       \draw[axis] (O) -- ++(0,0.5,0) node[above ] {$y$};
+       % \draw[axis] (O) -- ++(0,0,0.5) node[above] {$z$};
+
+
+
+       %\node at (2,2) [above ] {Mesh density = 2};
+       %\node at (0,-1) [below ] {PAT};
+       \node at (0,0) {$SR=\frac{1}{2}$};
+       % bottom roller
+       %\draw [gray!50] (0,0,0) -- (5,0,0) -- (5,2,0) -- (0,2,0) -- cycle;
+
+ 
+\end{tikzpicture}
+
+
+\end{document}

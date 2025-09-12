@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+\node at (0,0) {\includegraphics{images/strip_full.png}};
+\draw (-19.3,0.32) circle [x radius= 3cm, y radius = 0.75cm];
+
+\draw (-19.3+3,0.32) -- (10,-7+2.5);
+
+\clip(0,-7)circle[x radius= 20cm, y radius = 5cm];
+\node at (0,-7){\includegraphics{images/strip_zoom_1.png}};
+
+\draw [thick] (0,-7) circle [x radius= 20cm, y radius = 5cm];
+
+\end{tikzpicture}
+
+\end{document}

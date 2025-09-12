@@ -1,0 +1,105 @@
+
+\documentclass{standalone}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+
+\def\mystruct{\vphantom{hg}}
+
+\pgfplotsset{
+	legend image with text/.style={
+		legend image code/.code={
+		\node[anchor = center] at (0.3cm,0cm) {#1};
+		}
+	},width=15.5cm,height=7cm,compat=1.16,
+}
+
+
+\begin{document}
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+%title={bla bla},
+xlabel={$nB$},
+ylabel={error },
+name=boundary,
+legend columns = 2,
+legend style = {
+		legend cell align = left,
+		},
+	legend pos = north east,
+		%xmin=0,xmax=1.2,ymin=-15,ymax=1
+]
+
+\addlegendimage{legend image with text = MITC4}
+\addlegendentry{}
+
+\addlegendimage{legend image with text = PAT}
+\addlegendentry{}
+
+
+
+
+%P2 _ REC
+\addplot 
+[solid,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(5,1.88962e-05)
+(7,1.30262e-05)
+(11,4.36542e-06)
+(13,1.67428e-06)
+(15,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+%P2 _ TRI
+\addplot 
+[dashed,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(5,4.93208e-03)
+(7,2.97892e-03)
+(11,8.43284e-04)
+(13,3.19571e-04)
+(15,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{P2}
+
+
+%\addplot 
+%[
+%solid,mark options = {scale = 2,solid},
+%]
+%coordinates {(0,0)
+%(32,0)
+%};
+
+
+\end{axis}
+
+%\node [draw,fill=white,inner sep=0pt,above left = %0.5em ] at (boundary.south east) {\small
+%\begin{tabular} {cc}
+%fel & zdf \\
+%\ref{pgfplots:C_SS_P_Tri} & %\ref{pgfplots:C_SS_P_Rec} \\
+%\end{tabular}
+
+%};
+
+
+\end{tikzpicture}
+
+
+\end{document}

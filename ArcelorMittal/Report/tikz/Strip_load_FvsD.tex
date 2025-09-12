@@ -1,0 +1,92 @@
+
+\documentclass{standalone}
+%\usepackage[showframe]{geometry}
+%\usepackage{layout}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+%width=12cm,height=7cm
+%\geometry{
+%paperwidth = 3cm,
+%paperheight = 7cm,
+%margin = 0.5cm
+%}
+
+
+\begin{document}
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black},
+}
+
+% Drawing View
+%\tikzset{dimetric2/.style={
+%  x={(1cm,0cm)},
+%  y={(0.8cm,0.8cm)},
+%  z={(0.cm,0.3cm)},
+%}}
+
+\tikzset{dimetric2/.style={
+  x={(1cm,0cm)},
+  y={(0.3cm,0.8cm)},
+  z={(0cm,1cm)},
+}}
+
+\begin{tikzpicture}[dimetric2,scale=1]
+
+\coordinate (O) at (0.25,0.25,0); 
+\draw[axis] (O) -- ++(0.5,0,0) node[ right] {$x$};       \draw[axis] (O) -- ++(0,0.5,0) node[right ] {$y$};
+       % \draw[axis] (O) -- ++(0,0,0.5) node[above] {$z$};
+
+
+
+       %\node at (2,2) [above ] {Mesh density = 2};
+       %\node at (0,-1) [below ] {PAT};
+       %\node at (0,-3.5) [below ] {MITC4};
+       % bottom roller
+       \draw [gray!50] (0,0,0) -- (10,0,0) -- (10,1,0) -- (0,1,0) -- cycle;
+       \draw [gray!50,fill=gray!50] (5-0.5,0,0) -- (5-0.5,1,0) -- (5+0.5,1,0) -- (5+0.5,0,0) --  cycle;
+
+ 			\node at (0,-0) {};
+ 			\node at (10,2) {};
+ 			
+ 	%\draw[load] (0,0,{2}) -- (0,0,{0}) ;
+ 	
+\draw [thick] (0,0,0) -- (0,1,0) ;
+\draw [thick] (10,0,0) -- (10,1,0) ;
+ 	
+\foreach \x in {4.5,4.75,...,5.5} {
+	\foreach \y in {0,0.25,...,1} {
+    		\foreach \z in {0} {
+    	   		\draw[load]({\x},\y,{\z+1})  --  ({\x},\y,{\z}) ;  
+			}
+        }
+    }    
+ 			
+ 	\draw[ <-,gray] (0,0.5,0) to [out=90,in=180]  (0.5,1,1) node[right] {$w = w_0 sin ( 40* t )$};
+ 	
+ 	\draw[ <-,gray] (5,0.5,1) to [out=90,in=180]  (6,0.5,1.5) node[right] {$F = F_0 sin ( 40* t )$};
+ 	
+ 	\draw[ <-,gray] (10,0.5,0) to [out=90,in=0]  (9,0.5,0.6) node[left] {Simply supported};
+ 	
+ 	
+\draw (0,0,-0) -- (0,0,-0.5) ;
+\draw (10,0,-0) -- (10,0,-0.5) ;
+\draw[dim] (0,0,-0.25) -- (10,0,-0.25) node [midway,below] {$10m$} ;
+
+ 	
+  	
+\draw (3,0,-0) -- (3,0,0.5) ;
+\draw (3,1,-0) -- (3,1,0.5) ;
+\draw[dim] (3,0,0.25) -- (3,1,0.25) node [midway,right] {$1m$} ;
+ 		
+\end{tikzpicture}
+
+
+\end{document}

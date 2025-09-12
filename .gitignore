@@ -1,0 +1,29 @@
+# LaTeX intermediate and build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.ilg
+*.ist
+*.code-workspace
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nlo
+*.nls
+*.out
+*.run.xml
+*.synctex.gz
+*.synctex.gzr
+*.toc
+
+# PDF outputs (comment out if you want to keep final PDF in Git)
+# *.pdf
+
+# Temporary files
+*.nav
+*.snm
+
+

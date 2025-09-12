@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.14}
+\begin{document}
+
+
+\begin{tikzpicture}
+\begin{axis}
+\addplot3 [patch,patch type=triangle] 
+coordinates { (0, 0 ,0) (1 ,1, 1) (0 ,1 ,1) };
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,112 @@
+
+\documentclass{standalone}
+%\usepackage[showframe]{geometry}
+%\usepackage{layout}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+%width=12cm,height=7cm
+%\geometry{
+%paperwidth = 3cm,
+%paperheight = 7cm,
+%margin = 0.5cm
+%}
+
+
+\begin{document}
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black!55},
+}
+
+% Drawing View
+\tikzset{dimetric2/.style={
+  x={(1cm,0cm)},
+  y={(0cm,1cm)},
+  z={(0.5cm,0.5cm)},
+}}
+
+
+
+\begin{tikzpicture}[dimetric2,scale=1]
+
+       \node at (0,1) [above ] {Mesh density = 2};
+       \node at (0,-1) [below ] {PAT};
+       \node at (0,-3.5) [below ] {MITC4};
+       % bottom roller
+       \draw [gray!50] (0,0,0) circle (1);
+       %top roller
+  
+     \node at (-1.5,2) {};
+     \node at (1.5,-4.5) {};
+     
+    % \draw (-1.5,2) -- (1.5,2)-- (1.5,-4.5) -- (-1.5,-4.5) -- cycle ;
+    
+\draw[dashed,gray!50] (-1.2,0,0) -- (1.2,0,0) ;
+\draw[dashed,gray!50] (0,-1.2,-0) -- (0,1.2,-0)  ;
+
+
+\draw[fill=black] (0,0) circle (0.03);
+\draw[fill=black] (0,0.5) circle (0.03);
+\draw[fill=black] (0,1) circle (0.03);
+\draw[fill=black] (0.5,0) circle (0.03);
+\draw[fill=black] (1,0) circle (0.03);
+\draw[fill=black] (0.41,0.41) circle (0.03);
+\draw[fill=black] (0.92,0.38) circle (0.03);
+\draw[fill=black] (0.38,0.92) circle (0.03);
+\draw[fill=black] (0.707,0.707) circle (0.03);
+
+
+\draw   (0,1) -- (0,0.5) -- (0,0)  -- (0.5,0) -- (1,0) -- (0.92,0.38)   -- (0.707,0.707)  -- (0.38,0.92) -- cycle;
+\draw (0.92,0.38) --(0.41,0.41)-- (0.38,0.92)  ;
+\draw (0.5,0) --(0.41,0.41)-- (0,0.5)  ;
+
+
+ 
+
+
+       
+       % bottom roller
+       \draw [gray!50] (0,0-2.5,0) circle (1);
+       %top roller
+  
+     
+    
+\draw[dashed,gray!50] (-1.2,0-2.5,0) -- (1.2,0-2.5,0) ;
+\draw[dashed,gray!50] (0,-1.2-2.5,-0) -- (0,1.2-2.5,-0)  ;
+
+
+\draw[fill=black] (0,0-2.5) circle (0.03);
+\draw[fill=black] (0,0.5-2.5) circle (0.03);
+\draw[fill=black] (0,1-2.5) circle (0.03);
+\draw[fill=black] (0.5,0-2.5) circle (0.03);
+\draw[fill=black] (1,0-2.5) circle (0.03);
+\draw[fill=black] (0.41,0.41-2.5) circle (0.03);
+\draw[fill=black] (0.92,0.38-2.5) circle (0.03);
+\draw[fill=black] (0.38,0.92-2.5) circle (0.03);
+\draw[fill=black] (0.707,0.707-2.5) circle (0.03);
+
+
+\draw   (0,1-2.5) -- (0,0.5-2.5) -- (0,0-2.5)  -- (0.5,0-2.5) -- (1,0-2.5) -- (0.92,0.38-2.5)   -- (0.707,0.707-2.5)  -- (0.38,0.92-2.5) -- cycle;
+\draw (0.92,0.38-2.5) --(0.41,0.41-2.5)-- (0.38,0.92-2.5)  ;
+\draw (0.5,0-2.5) --(0.41,0.41-2.5)-- (0,0.5-2.5)  ;
+
+\draw (0,0-2.5) --(0.41,0.41-2.5)-- (0.707,0.707-2.5)  ;
+
+\draw (0.38,0.92-2.5) --(0,0.5-2.5)  ;
+
+
+\draw (0.92,0.38-2.5) --(0.5,0-2.5)  ;
+
+
+ 
+\end{tikzpicture}
+
+
+\end{document}

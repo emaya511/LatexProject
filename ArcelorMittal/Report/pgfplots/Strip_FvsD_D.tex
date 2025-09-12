@@ -1,0 +1,134 @@
+
+\documentclass{standalone}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+
+\def\mystruct{\vphantom{hg}}
+
+\pgfplotsset{
+	legend image with text/.style={
+		legend image code/.code={
+		\node[anchor = center] at (0.3cm,0cm) {#1};
+		}
+	},width=15.5cm,height=7cm,compat=1.16,
+}
+
+
+\begin{document}
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+%title={bla bla},
+xlabel={Mesh Density},
+ylabel={error },
+name=boundary,
+legend columns = 2,
+legend style = {
+		legend cell align = left,
+		},
+	legend pos = north east,
+		%xmin=0,xmax=1.2,ymin=-15,ymax=1
+]
+
+\addlegendimage{legend image with text = MITC4}
+\addlegendentry{}
+
+\addlegendimage{legend image with text = PAT}
+\addlegendentry{}
+
+%P1 _ REC _ D
+\addplot 
+[solid,
+mark=x,mark options = {scale = 2,solid},
+]
+coordinates {(2,6.06375e-04)
+(4,4.38188e-04)
+(8,1.69811e-04)
+(12,0.00000e+00)
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+
+%P1 _ TRI _ D
+\addplot 
+[dashed,
+mark=x,mark options = {scale = 2,solid},
+]
+coordinates {(2,7.36826e-03)
+(4,2.04098e-03)
+(8,3.45600e-04)
+(12,0.00000e+00)
+
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{P1}
+
+
+
+
+%P2 _ REC _ D
+\addplot 
+[solid,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(2,5.27483e-04)
+(4,4.07125e-04)
+(8,1.60287e-04)
+(12,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+%P2 _ TRI _ D
+\addplot 
+[dashed,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(2,7.40007e-03)
+(4,2.12930e-03)
+(8,3.97941e-04)
+(12,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{P2}
+
+
+%\addplot 
+%[
+%solid,mark options = {scale = 2,solid},
+%]
+%coordinates {(0,0)
+%(32,0)
+%};
+
+
+\end{axis}
+
+%\node [draw,fill=white,inner sep=0pt,above left = %0.5em ] at (boundary.south east) {\small
+%\begin{tabular} {cc}
+%fel & zdf \\
+%\ref{pgfplots:C_SS_P_Tri} & %\ref{pgfplots:C_SS_P_Rec} \\
+%\end{tabular}
+
+%};
+
+
+\end{tikzpicture}
+
+
+\end{document}

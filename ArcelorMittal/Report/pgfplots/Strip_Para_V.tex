@@ -1,0 +1,80 @@
+
+\documentclass{standalone}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+
+\def\mystruct{\vphantom{hg}}
+
+\pgfplotsset{
+	legend image with text/.style={
+		legend image code/.code={
+		\node[anchor = center] at (0.3cm,0cm) {#1};
+		}
+	},width=15.5cm,height=7cm,compat=1.16,
+}
+
+
+\begin{document}
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+%title={bla bla},
+xlabel={Time(s)},
+ylabel={Displacement(m) at point (0.5,5) },
+name=boundary,
+legend columns = 1,
+legend style = {
+		legend cell align = left,
+		},
+	legend pos = south west,
+		xmin=0,xmax=0.25,%ymin=-15,ymax=1
+]
+
+%\addlegendimage{legend image with text = MITC4}
+%\addlegendentry{}
+
+%\addlegendimage{legend image with text = PAT}
+%\addlegendentry{}
+
+
+\addplot [densely dotted] table{toplot/V/-8/Dynamic_Pn2.txt};
+\addlegendentry{V=-8m/s}
+
+
+\addplot [solid] table{toplot/V/0/Dynamic_Pn2.txt};
+\addlegendentry{V=+0m/s}
+
+\addplot [dashed] table{toplot/V/8/Dynamic_Pn2.txt};
+\addlegendentry{V=+8m/s}
+
+%\addplot 
+%[
+%solid,mark options = {scale = 2,solid},
+%]
+%coordinates {(0,0)
+%(32,0)
+%};
+
+
+\end{axis}
+
+%\node [draw,fill=white,inner sep=0pt,above left = %0.5em ] at (boundary.south east) {\small
+%\begin{tabular} {cc}
+%fel & zdf \\
+%\ref{pgfplots:C_SS_P_Tri} & %\ref{pgfplots:C_SS_P_Rec} \\
+%\end{tabular}
+
+%};
+
+
+\end{tikzpicture}
+
+
+\end{document}

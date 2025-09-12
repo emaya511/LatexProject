@@ -1,0 +1,82 @@
+
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.14}
+
+\begin{document}
+
+\def\addtriangle#1{
+    \xdef\trianglesbuffer{\trianglesbuffer #1}
+}
+\def\calculatecoordinate(#1,#2,#3)[#4]=\f(#5,#6){
+        \pgfmathsetmacro#1{#5}
+        \pgfmathsetmacro#2{#6}
+        \pgfmathsetmacro#3{\f({(#5)},{(#6)})}
+        \pgfmathsetmacro#4{\g({(#5)},{(#6)})}
+}
+\def\calculatetriangle#1{
+    % #1 is +            #1 is -
+    %         C                  B A  
+    %          ?                  ?   
+    %         A B                  C  
+    \calculatecoordinate(\xa,\ya,\za)[\wa]=\f(\x,\y)
+    \calculatecoordinate(\xb,\yb,\zb)[\wb]=\f(\x#11,\y)
+    \calculatecoordinate(\xc,\yc,\zc)[\wc]=\f(\x,\y#11)
+    \addtriangle{(\xa,\ya,\za)[\wa] (\xb,\yb,\zb)[\wb] (\xc,\yc,\zc)[\wc]}
+}
+\def\calculatetheplot{
+    \foreach\x in{0,...,20}{
+        \foreach\y in{0,...,20}{
+            % check \x + \y + \z =1
+            %       ?
+            %       ? ?
+            %       ? ? ?
+            \ifnum\numexpr\x+\y<20
+                \calculatetriangle+
+            \fi
+            %       
+            %        ?
+            %        ? ?
+            \ifnum\numexpr\x>0 \ifnum\numexpr\y>0 \ifnum\numexpr\x+\y<21
+                \calculatetriangle-
+            \fi\fi\fi
+        }
+    }
+}
+
+
+
+\def\calculatecoordinate(#1,#2,#3)[#4]=\f(#5,#6){
+        \pgfmathsetmacro#1{#5+\f({(#5)},{(#6)})}
+        \pgfmathsetmacro#2{#6+\f({(#5)},{(#6)})}
+        \pgfmathsetmacro#3{20-(#5)-(#6)+\f({(#5)},{(#6)})}
+        \pgfmathsetmacro#4{\g({(#5)},{(#6)})}
+}
+
+\begin{tikzpicture}
+    \begin{axis}[axis lines=middle,axis equal,view={80}{15}]
+        \def\trianglesbuffer{} % clear the buffer
+        \def\f(#1,#2){0} % we want to plot this function
+        \def\g(#1,#2){0} % with this point meta
+        \calculatetheplot
+        \edef\pgfmarshal{
+            \noexpand\addplot3
+                [patch,patch type=triangle,mesh,point meta=explicit]
+                coordinates{\trianglesbuffer};
+        }
+        \pgfmarshal
+        \def\trianglesbuffer{} % clear the buffer
+        \def\f(#1,#2){1+sin(20*#1)*cos(30*#2)} % we want to plot this function
+        \def\g(#1,#2){\f({(#1)},{(#2)})} % with this point meta
+        \calculatetheplot
+        \edef\pgfmarshal{
+            \noexpand\addplot3
+                [patch,patch type=triangle,point meta=explicit]
+                coordinates{\trianglesbuffer};
+        }
+        \pgfmarshal
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

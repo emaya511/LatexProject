@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+\node at (0,0) {\includegraphics[scale=0.75]{images/galv_line.jpg}};
+\node at (10,0) {};
+\node at (0,0) {};
+
+\draw [latex-,red,very thick](0,4) -- (5,4) node [right,black] {Zinc Coated Steel Plate};
+
+\draw [latex-,red,very thick](-0.5,0.8) -- (5,0.8) node [right,black,text width = 5cm] {'eMASS' Electromagnets Strip Stabilizer };
+
+\draw [latex-,red,very thick](-0.5,-1.8) -- (5,-1.8) node [right,black,text width = 5cm] {Air Knife};
+
+
+\draw [latex-,red,very thick](1,-4)--++ (0.5,0.5) -- (5,-3.5) node [right,black,text width = 5cm] {Moltern Zinc};
+
+\end{tikzpicture}
+
+\end{document}

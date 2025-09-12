@@ -1,0 +1,70 @@
+\documentclass[main.tex]{subfiles}
+%\providecommand{\main}{...}
+\begin{document}
+\chapter{Introduction}
+\section{Hot-Dip Galvanization} 
+The hot - dip galvanization process is form of galvanization process where zinc metal is coated to steel or iron metal. Steel or Iron metal is immersed in a molten zinc bath and taken out. Then the metal is let to cool to create a thin layer of zinc coating. This Zinc coating prevents the metal from \textbf{atmospheric corrosion} and galvanic corrosion. 
+
+\begin{figure}[h!]
+\centering
+
+\includestandalone[mode=image,build={quote={}}]{"tikz/GalvLine"}
+\caption{Schematics of the Hot Dip Galvanization Process}
+\label{fig:hotdip_sch}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+
+\includestandalone[mode=image,build={quote={}}]{"tikz/GalvLine_Real"}
+\caption{Hot Dip Galvanization Process}
+\label{fig:hotdip}
+\end{figure}
+
+To galvanize the sheet metals,  the sheet metals are continuously moved through several process. The over all schematics of the process is given in the figure : \ref{fig:hotdip_sch}. First the sheet metal is Prepared by cleaning with chemical solutions then heated in continuous annealing furnace to get desired mechanical properties. The treated sheet metal is immersed in a molten zinc bath and passed through a air knife which removes excess zinc attached to the metal strip and also helps in regulating the thickness of the zinc  layer. The metal sheet is continuously moves upward and passes the cooling fans and later to be rolled and shipped. The rollers immersed in the zinc bath, are operated under high temperature at around \textbf{500 degree} . So, they tend to degrade in a matter of days. This results in vibration of the metal strip. The vibration of the metal strip will cause the uneven blow at both side of strip which will result in a uneven coating and degraded surface quality. One best way to control the vibration is by increasing the natural frequency. To increase the dominant natural frequency , The steel strip it is highly stressed in axial direction. Other way is to continuously monitor the vibration and the rollers are changed when needed. Frequent roller change might incur heavy production loss. To over come this problem electromagnets are employed on both the sides of the plate using control algorithms. These electromagnets attract the plate to the opposite direction of deformation fig:\ref{fig:hotdip}. Proximity sensors are placed near the electromagnets and its measures the position of the plate. This signal is used to predict the control signal that is sent to the electromagnets. Correcting roller is used to control the tension on the plate by moving horizontally.  Stabilizing roller is usually stationary, this guides the plate to be traveled in a precise location between the air knives. 
+
+ 
+ Many Control Algorithms techniques exist. To Design and evaluate the right Control algorithm a accurate model is required.  Engineers mostly use a numerical methods to model system of which the control will be utilized . This required a reliable and accurate numerical model. Finite Element method is selected as for this purpose as it is widely used and proven its efficiency for over many decades. 
+
+
+
+
+\section{About ArcelorMittal}
+
+ArcelorMittal is the global leader in steel production and mining activity. ArcelorMittal is formed in 2006 by merging MittalSteel and Arcelor. The headquarters of ArcelorMittal is in Luxembourg. ArcelorMittal has many research centers around the world and they spend hundreds of millions of dollars in research and development. ArcelorMittal Maizières research SA is the research center where this thesis is undertaken under the department of measurement and control. The main task of this department was to explore and fine turn the new measurement techniques in profit of increasing the quality of the steel production. The control team of the department is specialized in developing advanced control strategies (\textbf{Model Predictive control}, Model - based control etc,.) to continuously improve the comfort of operators and the product quality.
+
+
+
+
+\section{Overview}
+
+The Metal Strip in the Hot-Dip Galvanization Process exhibit complex behaviors. The metal strip is constantly traveling between rollers and it is also axially loaded to reduce vibration. It experiences lateral load caused by electromagnets and Air knife. It is also imposed with displacement load in both the ends. The problem of moving materials exists since the age of industrial revolution in industries like textile webs production, Paper manufacturing and Printing press. Many other examples can be found such as conveyor belts, Magnetic tapes, Band saw, Power Transmission belts etc[\cite{CHOI20021}][\cite{Moving_sandwich}].
+
+Later work on axially travelling string is provided by [\cite{STEINBOECK2015598}] and [\cite{KOIVUROVA1999845}]. [\cite{string_biblio}] did a detailed bibliographic study of vibration and control of moving string. Travelling string models are perfect for materials like threads which do not have significant bending stiffness. But, For applications like Band saw the bending stiffness is signifant. So, traveliing beams had to be developed.In \cite{CHEN2006996}, \cite{CHANG20101482}, \cite{Moving_beam}, \cite{Moving_TIM_Beam} models of travelling beams can be found. \cite{BookDynmicMarynowiski2008} in the book detailed information moving materials (strings, beams and strips) are discussed. 
+
+
+ \cite{moving_membrane_with_air_roller} discussed moving Membrane and provided a comprehensive derivation of mixed formulation. The paper also address the initial curvature and curved roller contact at the boundaries and how to address them. Fluid interaction is also studied and added mass method is provided to model the fluid around the web. \cite{SAXINGER2016190} studied the axially moving strip using Kirchhoff plate theory and a Detailed study on geometric non-linearity is provided .
+The plates are kept at high temperatures, so the changes of plastic deformation are high. The history of plastic deformation by the rollers affects the zinc coating because of the Cross bow effect \cite{Baumgart2017}. The visco elastic band is studies by \cite{NumMethodBookString2013}.  In this case the axial tension is considered as a constant and known. The time varying axial tension cause parametric resonance which is studeid by [\cite{KIM2003679}].
+
+
+
+Finite Element method is the most common numerical method used to simulate solids and structures. Even thought the FEM techniques were developed decades back they have been research extensively will continued to be developed because of their usefulness. A traveling plate model is used for the for simulation. Finite element method to model moving membrane is discussed in \cite{non_moving_mem_fem}. A commercial software is modified to achieve this. \cite{WANG1999467} discussed the Finite element modeling of moving Reissner Mindlin plate using MITC4 element. It is also re-emphasized  that the natural frequency tends to be zero as the axial velocity approaches the critical speed. The critical speed increases if the axial tension is also increased. 
+
+
+ 
+
+In the current work, both the plate are implepmented using its respective plate theories. Reissner Mindlin plate is approximated by a QUAD4 element [\cite{MATLAB_FEM}] which is the most easiest to apply. PAT element [\cite{ZIENKIE_BOOK_STRUCT_CH11}]is used to approximate the Kirchhoff plate. PAT element is C1 continuous which makes it complicated. New-mark algorithm is selected as the default time integration algorithm.  The objective of the thesis is to integrate the FEM with control laws. Easiest way is to represnt the equation in state-space form \cite{FEM_MATLAB} so that it can be easily used by MATLAB simulink tool. Another technique is by created operator between output and input so that a relation can be applied. this is achieved by operator overloading function in object oriented programming
+
+
+%**effect of fliud flow using a CFD software and other parameters\cite{Chen_2013_Hot_Dip}
+
+%**\cite{2005_jet_finish} studied  using commercial softwares the kief strip and coating thivkness CFD. 
+ 
+
+\section{Thesis Outline}
+Theories of plates were discussed in chapter : 2. Kirchhoff's plate and Reissner Mindlin plate were discussed. Hamilton principle is used to derive the weak from of the problem. A form of mixed Euler - Lagrange formulation is used to derive the velocity of the plate and finally the weak form is discussed. In chapter : 3, the finite element method is discussed. The elements types QUAD4 and PAT elements are introduced and the conversion of weak from to FE format is provided. Methods to integrate FE with existing control algorithms were given. In results and discussion chapter, the FEM modal is analyses with different loading and boundary conditions. The effects of over all mesh density and directional mesh density were analyzed. An optimized mesh is provided, that is very effective for this application. and finally a comparison is made between the FEM model and existing Galerkin model. Thesis ended with an comprehensive conclusion. Future needed developments are also discussed in the conclusion. Appendix contains additional information related to the thesis. 
+
+
+
+\end{document}
