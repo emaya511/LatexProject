@@ -8,7 +8,7 @@ rm *.nlo
 rm *.run.xml
 rm *.toc
 rm *.synctex.gzr
-rm *.pdf
+rm *.gz
 rm *.ist
 rm *.nls
 rm *.ilg
