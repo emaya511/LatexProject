@@ -3,12 +3,6 @@
 %\usetikzlibrary{arrows}
 %\usepackage{verbatim}
 
-\tikzset{
-  load/.style   = {ultra thick,-latex},
-  stress/.style = {-latex},
-  dim/.style    = {latex-latex},
-  axis/.style   = {-latex,black!55},
-}
 
 \begin{document}
 
@@ -20,11 +14,11 @@
 %}
 
 % Drawing View
-\tikzset{dimetric2/.style={
-  x={(0cm,1cm)},
-  y={(1cm,0cm)},
-  z={(0cm,0cm)},
-}}
+%\tikzset{dimetric2/.style={
+%  x={(0cm,1cm)},
+% y={(1cm,0cm)},
+% z={(0cm,0cm)},
+%}}
 
 
 %\begin{tikzpicture}
@@ -46,6 +40,12 @@
      %  \draw[axis] (O) -- ++(0.5,0,0) node[below right] {$x$};
      %  \draw[axis] (O) -- ++(0,0.5,0) node[above left] {$y$};
 
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black!55},
+}
 
 
 
@@ -61,7 +61,7 @@
   
 \draw (0.83,1.9) -- (0.83,2.3) ;
 \draw (5.55,1.605) -- (5.55,2.3) ;
-%\draw[dim] (0.83,2.1) -- (5.55,2.1) node [midway,below] {$5m$} ;
+\draw[dim] (0.83,2.1) -- (5.55,2.1) node [midway,below] {$5m$} ;
 
 
 

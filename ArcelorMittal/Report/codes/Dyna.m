@@ -26,7 +26,7 @@ FEM.Fp(1)=NeumannOnPhyEn(FEM, [21 22 23 24], [1 0 0], 1000);
 FEM.ApplyF(FEM. Fp(1)*FEM.TS     )
 FEM.ImposeU( FEM. Up(1)*FEM.TS  )
 FEM.ImposeU( FEM. Up(2)  )
-FEM.SetDomain([1 21 22 23 24],[1],'BCIZ2');
+FEM.SetDomain([1 21 22 23 24],[1],'PAT');
 
  %% To set intial displacement and velocity zero
 FEM.InitialX('zero');

@@ -15,7 +15,8 @@
 \usepackage{sansmathaccent}
 %\pdfmapfile{+sansmathaccent.map}
 %\usepackage{subcaption}
-\usepackage{comment} 
+\usepackage{comment}
+
 
 %%%%%%  listing
 
@@ -61,9 +62,9 @@
 %\usetheme{Malmoe}
 %\usetheme{Antibes}
 %\usetheme{warsaw}
-%\usetheme{frankfurt}  %%
+\usetheme{Frankfurt}  %%
 %\usetheme{Dresden}
-\usetheme{Madrid}
+%\usetheme{Madrid}
 %\usetheme{Malmoe} %
 %\usetheme{Ilmenau}
 }
@@ -113,7 +114,18 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics[width=0.25\linewidth]{images/ArcelorMittal_logo.png}
+		\begin{columns}  
+		\column{0.33\textwidth}
+		 \includegraphics[width=0.5\linewidth]{images/ECN.png}
+		 \column{0.33\textwidth}
+		 \begin{center}
+		 \includegraphics[width=0.5\linewidth]{images/ArcelorMittal_logo.png}
+		 \end{center}
+	     \column{0.33\textwidth}
+	     \begin{flushright}
+		 \includegraphics[width=0.5\linewidth]{images/Uni-logo.png}
+		 \end{flushright}
+		 \end{columns}
     \vskip1em\par
     \begin{beamercolorbox}[sep=8pt,center,#1]{title}
 %      \usebeamerfont{title}
@@ -183,9 +195,9 @@ Hot-Dip Galvanization Process}
 \section{Introduction}
 
 \begin{frame}
-\frametitle{Objective of the internship}
+\frametitle{Objective of the Internship}
 \begin{itemize}
-\item To understand the Hot-Dip Galvanization process to have an idea about the loads and boundary condition.
+\item To understand the Hot-dip galvanization process and to have an idea about the loads and boundary condition.
 \item To find existing research about finite element of strip used in this process.
 \item To formulate plate equation of motion
 \item To code accurate and efficient finite element program from scratch
@@ -217,11 +229,29 @@ Hot-Dip Galvanization Process}
 
 
 \subsection{Hot-Dip Galvanization Process}
+\begin{comment}
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{figure}
+\centering
+%\subfloat[Schematics of the Hot-Dip Galvanization Line \label{fig:galvline}]
+\subfloat[\captionformat{labelformat=empty}]{\includestandalone[mode=image,build={quote={}},width=0.88\textwidth]{"tikz/GalvLine"}} \quad
+\end{figure}
+\column{0.4\textwidth}
+\includegraphics[width=1\textwidth]{images/galv_line.jpg}
+%\includegraphics[scale=1]{images/galv_line.png}
+\end{columns}
+\end{frame}
+\end{comment}
+
+%\begin{comment}
 \begin{frame}
 \frametitle{Hot-Dip Galvanization Process}
 \begin{figure}
 \centering
-\subfloat[Schematics of the Hot-Dip Galvanization Line \label{fig:galvline}]{\includestandalone[mode=image,build={quote={}},width=11.5cm]{"tikz/GalvLine_ppt"}} \quad
+\subfloat{\includestandalone[mode=image,build={quote={}},width=11.5cm]{"tikz/GalvLine_ppt"}} 
+\caption{Schematics of the Hot-Dip Galvanization Line}
 \end{figure}
 \end{frame}
 
@@ -234,18 +264,20 @@ Hot-Dip Galvanization Process}
 \begin{figure}
 
 \centering
-\subfloat[Hot-Dip Galvanization Line \label{fig:galvline}]{\includestandalone[mode=image,build={quote={}},width=7.5cm]{"tikz/GalvLine_Real"}} 
-
+\subfloat{\includestandalone[mode=image,build={quote={}},width=7.5cm]{"tikz/GalvLine_Real"}} 
+\caption{Hot-Dip Galvanization Line}
 \end{figure}
 \column{0.35\textwidth}
 \begin{itemize}
-\item A thin Layer of Zinc is coated to Increase the corrosion resistance of steel
+\item A thin layer of Zinc is coated to increase the corrosion resistance of steel
 \item Air knives control the thickness of the Zinc layer
-\item Excessive Vibration results in uneven coating.
+\item Excessive vibration results in uneven coating.
 \item Electromagnets are used to control the  vibration of the strip. 
 \end{itemize}
 \end{columns}
 \end{frame}
+%\end{comment}
+
 
 \section{Axially Moving Plate}
 \begin{frame}\frametitle{Axially Moving Plate}
@@ -263,7 +295,7 @@ Hot-Dip Galvanization Process}
 \item $\Omega$ is the two dimensional domain strictly in xy plane 
 \item $h$ is the thickness of the plate 
 \item $\Omega_1$...$\Omega_i$ are the sub-domains where pressure forces $q_1$..$q_i$ are applied
-\item $V$ is the Line speed and  $Nx$ is the tension on the line
+\item $V$ is the line speed and  $N_y$ is the tension on the line
 \item $L$ is the length and  $B$ is the width 
 
 \end{itemize}
@@ -296,7 +328,7 @@ Here, $\mathbf{v}$ is the total velocity vector of the plate. $M$ becomes zero b
 
 \subsection{Plate Theories}
 \begin{frame}
-\frametitle{Plate theories}
+\frametitle{Plate Theories}
 
 \begin{block}{Plate assumptions}
 \begin{itemize}
@@ -304,14 +336,14 @@ Here, $\mathbf{v}$ is the total velocity vector of the plate. $M$ becomes zero b
 
 \item  In the absence of axial deformation, any point in the mid-plane only moves either in an upward or downward direction
 
-\item  The flat plane normal to mid-plane will always be a flat plane, they won't distort. 
+\item  The flat planes normal to mid-plane will always be a flat planes, they won't distort. 
 \end{itemize}
 \end{block}
 \begin{columns}
 \column{0.65\textwidth}
 \begin{figure}[ht!]
 \centering\includestandalone[mode=image,build={quote={}},width=7cm]{"tikz/Plate_Theory"}
-\caption{Description of domain}
+%\caption{Description of domain}
 \label{fig:Domain}
 \end{figure}
 \column{0.35\textwidth}
@@ -337,20 +369,20 @@ Here, $\mathbf{v}$ is the total velocity vector of the plate. $M$ becomes zero b
  Kirchhoff plate theory is well suitable for thin plates. A straight line normal to mid-plane stays normal and straight after deformation($\phi_x=0$).  Because of this assumption, the shear strains ($\epsilon_{23}$ and $ \epsilon_{13}$)  are neglected.
 
 
-\begin{align}
+\begin{align*}
 \theta_x  = \frac{\partial w }{\partial x}  \quad & \quad
 \theta_y  = \frac{\partial w }{\partial y} 
-\end{align}
+\end{align*}
 
 \end{block}
 
 \begin{block}{Reissner Mindlin plate theory}
-The Reissner Mindlin plate theory is developed for the thick plates but can be used for thin plates with caution.  For Reissner Mindlin plate theory, the line normal to the middle plate will not necessarily be normal after deformation, but will be straight In equation.\ref{eq:thetaRM}, $\phi_x$ and $\phi_y$ are the angles between plane normal to middle plane and plane of actual deformation.  
+The Reissner Mindlin plate theory is developed for the thick plates but can be used for thin plates with caution.  For Reissner Mindlin plate theory, the line normal to the middle plate will not necessarily be normal after deformation, but will be straight. $\phi_x$ and $\phi_y$ are the angles between plane normal to middle plane and plane of actual deformation.  
 
-\begin{align}\label{eq:thetaRM}
+\begin{align*}\label{eq:thetaRM}
 \theta_x  = \frac{\partial w }{\partial x} + \phi_x \quad & \quad
 \theta_y  = \frac{\partial w }{\partial y} + \phi_y
-\end{align}
+\end{align*}
 \end{block}
 \end{frame}
 
@@ -420,7 +452,7 @@ For Reissner Mindlin Plate
 
 The Hooke's law for the  homogenous linear isotropic material is considered.
 
-\begin{equation}
+\begin{equation*}
 \vect{\sigma}^B = \begin{bmatrix}
 \sigma_{11}
 \\
@@ -446,7 +478,7 @@ E & \nu E & 0
 =
 \vect{D}
 \vect{ \epsilon}^B
-\end{equation}
+\end{equation*}
 
 
 \begin{align*}
@@ -640,7 +672,7 @@ Substituting everything in the Hamilton principle and taking integration by part
 \end{split} 
 \end{equation*}
 
-First term in the equation corresponds to the local acceleration. second and third terms are the Coriolis acceleration and the fourth term is the centripetal acceleration. Because of theseterms this equation is gyroscopic. 
+First term in the equation corresponds to the local acceleration. second and third terms are the Coriolis acceleration and the fourth term is the centripetal acceleration.
 
 \end{frame}
 
@@ -801,7 +833,7 @@ The displacement field over the element is given as the sum of product of shape 
 \end{comment}
 
 \subsection{Reissner Mindlin plate element (QUAD4)}
-\begin{frame}\frametitle{Reissner Mindlin Plate element}
+\begin{frame}\frametitle{Reissner Mindlin Plate Element (QUAD4)}
 
 \begin{columns}
 \column{0.6\textwidth}
@@ -863,6 +895,9 @@ J=\begin{bmatrix}
 
 \end{frame}
 
+\begin{comment}
+
+
 
 \begin{frame}
 \frametitle{Representation of Displacements and Strains in terms of Shape Function.}
@@ -910,7 +945,7 @@ Similarly other terms of the Finite Element Matrices are
 \end{align*}
 %\end{equation*}
 \end{frame}
-
+\end{comment}
 
 \subsection{Kirchhoff Plate Element (PAT)}
 \begin{frame}\frametitle{Kirchhoff Plate Element (PAT)}
@@ -1011,7 +1046,7 @@ x_2-x_3 & x_3-x_1 & x_1-x_2
 \end{equation*}
 \end{frame}
 
-
+\begin{comment}
 \begin{frame}
 
 
@@ -1062,9 +1097,73 @@ w_1 \\
 \end{equation}
 similarly all other terms are converted similar to QUAD4 element
 \end{frame}
+\end{comment}
 
 
 
+\begin{frame}
+\frametitle{Representation of Displacements and Strains in terms of Shape Function.}
+The FE approximation of the curvature for the QUAD4 element is given as.
+\begin{equation*}\label{eq:kappa}
+\vect{ \kappa }  \approx
+\begin{bmatrix}
+0 & \overline{N}_{1,1} & 0 & \cdots & 0 \\
+0&  0 & \overline{\overline{N}}_{1,2}  & \cdots & \overline{\overline{N}}_{4,2} 
+\\
+0&  \overline{N}_{1,2} & \overline{\overline{N}}_{1,1}  & \cdots & \overline{\overline{N}}_{4,1} 
+\end{bmatrix} 
+\left\{
+\begin{array}{r}
+w_1 \\
+\theta_{x_1} \\
+\theta_{y_1} \\
+\vdots \\
+\theta_{y_{4}} \\
+\end{array} \right\}=\mathbf{ B } \mathbf{\tilde{u}^e}
+\end{equation*}
+
+
+For the PAT elements the approximation of $\kappa$ is given as
+
+
+\begin{equation*}\label{eq:kappa_KR}
+\vect{ \kappa }   \approx
+\begin{bmatrix}
+N_{1,11} & N_{2,11} & N_{3,11} & \cdots & N_{9,11} \\
+N_{1,22} & N_{2,22} & N_{3,22} & \cdots & N_{9,22} \\
+N_{1,12} & N_{2,12} & N_{3,12} & \cdots & N_{9,12} 
+\end{bmatrix} 
+\left\{
+\begin{array}{r}
+w_1 \\
+\theta_{x_1} \\
+\theta_{y_1} \\
+\vdots \\
+\theta_{y_{3}} \\
+\end{array} \right\}=\mathbf{ B } \mathbf{\tilde{u}^e}
+\end{equation*}
+
+
+ 
+Similarly other terms of the Finite Element Matrices are
+%\begin{equation*}
+\begin{align*}
+\tilde{ \mathbf{ u}}  & \approx  \mathbf{N}  \tilde{\mathbf{u}}^e
+&
+\dot{\tilde{ \mathbf{ u}} } & \approx  \mathbf{N}  \dot{\tilde{\mathbf{u}}}^e
+&  
+\ddot{\tilde{ \mathbf{ u}} } &  \approx   \mathbf{N}  \ddot{\tilde{\mathbf{u}}}^e
+&
+\tilde{\mathbf{\epsilon}}^S  & \approx  \mathbf{ B_S }\tilde{\mathbf{u}}^e
+\\
+\tilde{w}_{, 2}  & \approx  \mathbf{ H_A }\tilde{\mathbf{u}}^e
+&
+\tilde{ \mathbf{ u}}_{,2}  & \approx  \mathbf{ H_v }\tilde{\mathbf{u}}^e
+&
+\tilde{w}  & \approx  \mathbf{ N_f }\tilde{\mathbf{u}}^e
+\end{align*}
+%\end{equation*}
+\end{frame}
 
 
 \begin{frame}
@@ -1235,7 +1334,7 @@ All the Element mass Matrices $\left[ \mathbf{M^e}  \right]$ are assembled in th
 
 
 \end{comment}
-
+\begin{comment}
 \begin{frame}
 \frametitle{Solution Procedure}
 
@@ -1277,7 +1376,7 @@ Unconditionally Stable for
 
 \end{columns}
 \end{frame}
-
+\end{comment}
 
 
 
@@ -1298,17 +1397,17 @@ Unconditionally Stable for
     FEM.ReadMesh('strip.msh');
     FEM.Mat(1)=MATDat("Mat.dat.txt");
 
-    t=linspace(0,10,2001);
-    x1=sin(25*t);    
+    t=linspace(0,10,2001);     x1=sin(25*t);    
 
     FEM.Pp(1)=ProbeOnPhyEn([21 22 23 24],[1 0 0]);
     FEM.T=FEMTime(0.01,3);
     FEM.TS(1)=TimeSeries(t,x1);
 
-
     FEM.Up(1)=DirichletOnPhyEn(FEM, [12], [1 0 0], 0 );
     FEM.Up(2)=DirichletOnPhyEn(FEM, [11], [1 0 0], 0.01 );
     FEM.Fp(1)=NeumannOnPhyEn(FEM, [22 23 24 21], [1 0 0], 20000 );
+    FEM.ImposeU( FEM. Up(2)  *  FEM.TS(1)  );
+    FEM.ImposeU( FEM. Up(1)   );
 \end{lstlisting}
 
 \end{frame}
@@ -1316,26 +1415,17 @@ Unconditionally Stable for
 \begin{frame}[fragile] 
   \begin{lstlisting}[language=matlab]
   
-    FEM.ImposeU( FEM. Up(2)  *  FEM.TS(1)  );
-    FEM.ImposeU( FEM. Up(1)   );
-
-    K1=10;
-    K2=2;
-    K3=10; 
-    P1 = K1 * FEM.Pp(1).forT(0);
-    P2 = K2 *(FEM.Pp(1).forT(0)-FEM.Pp(1).forT(-1))/(FEM.T.forT(0)-FEM.T.forT(-1));
-    P3 = K3 * Int(FEM.Pp(1));
+     K1=10;      K2=2;       K3=10; 
+     P1 = K1 * FEM.Pp(1).forT(0);
+     P2 = K2 *(FEM.Pp(1).forT(0)-FEM.Pp(1).forT(-1))/(FEM.T.forT(0)-FEM.T.forT(-1));
+     P3 = K3 * Int(FEM.Pp(1));
      FEM.ApplyF( -1 *  FEM.Fp(1)  * (P1 + P2 + P3) );
     
-
-     FEM.SetDomain([1 21 22 23 24],[1],'MITC4');
-    % 
+     FEM.SetDomain([1 21 22 23 24],[1],'QUAD4'); 
      FEM.InitialX('zero');
      FEM.InitialV('zero');
     % 
-     tic;
      FEM.SolveLU();
-     toc;
     % 
      FEM.WritePos();
      FEM.WriteProbe();
@@ -1344,6 +1434,10 @@ Unconditionally Stable for
      FEM.WriteF();
 
 \end{lstlisting}
+
+\begin{equation*}
+F(t_{n+1})=-(K_1 \cdot U(t_{n})+K_2\cdot\frac{\text{d}U}{\text{d}t}+K_3\cdot\int_{t_0}^{t_n} U dt)
+\end{equation*}
 \end{frame}
 
 
@@ -1412,9 +1506,9 @@ Unfortunately, the FEM discretization of the domain have huge number of nodes wh
 \column{0.6\textwidth}
 \begin{figure}
 	\centering
-	\subfloat[First subfigure \label{fig:a}][BuiltIN point load]
+	\subfloat[First subfigure \label{fig:a}][Built-In point load]
 	{\includegraphics[trim={4cm 0 4cm 0},clip,width=3cm]{images/appedix_sim_result/C_BI_P.png}}
-	\subfloat[First subfigure \label{fig:a}][BuiltIN distributed load]
+	\subfloat[First subfigure \label{fig:a}][Built-In distributed load]
 	{\includegraphics[trim={4cm 0 4cm 0},clip,width=3cm]{images/appedixsimresult/C_BI_q.png}}\quad 
 	\subfloat[First subfigure \label{fig:a}][SS point load]
 	{\includegraphics[trim={4cm 0 4cm 0},clip,width=3cm]{images/appedixsimresult/C_SS_P.png}}
@@ -1489,7 +1583,7 @@ Unfortunately, the FEM discretization of the domain have huge number of nodes wh
 \end{figure}
 \end{frame}
 
-
+\begin{comment}
 \begin{frame}\frametitle{Strip with distributed load and imposed displacement (1/2)}
 \begin{figure}[h!]
 \centering
@@ -1531,7 +1625,7 @@ Unfortunately, the FEM discretization of the domain have huge number of nodes wh
 \end{columns}
 
 \end{frame}
-
+\end{comment}
 
 \begin{frame}\frametitle{Study on Directional mesh density}
 
@@ -1610,12 +1704,12 @@ Unfortunately, the FEM discretization of the domain have huge number of nodes wh
 
 
 \begin{frame}
-\frametitle{Comparison of FEM solution with Galarkin method }
+\frametitle{Comparison of FEM solution with Galerkin method }
 
 \begin{figure}
 
-\subfloat[First subfigure \label{fig:a}][Mesh : strip , Nn = 1886, Solution Time = 21s]{\includestandalone[mode=image,build={quote={}},width=0.8\textwidth]{"pgfplots/FEMvsGAL_ppt"}}
-
+\subfloat{\includestandalone[mode=image,build={quote={}},width=0.8\textwidth]{"pgfplots/FEMvsGAL_ppt"}}
+\caption{FEM compared with Galerkin method}
 \end{figure}
 
 
@@ -1630,13 +1724,21 @@ Unfortunately, the FEM discretization of the domain have huge number of nodes wh
 \begin{frame}
 \frametitle{Study with different axial velocity}
 
+%\begin{colum%ns}
 
 \begin{figure}
-\subfloat[First subfigure \label{fig:a}][Mesh : strip , Nn = 1886, Solution Time = 21s]{\includestandalone[mode=image,build={quote={}},width=0.8\textwidth]{"pgfplots/Strip_Para_V"}}
+\subfloat{\includestandalone[mode=image,build={quote={}},width=0.8\textwidth]{"pgfplots/Strip_Para_V"}}
+\caption{Response of a strip with different axial velocity}
 \end{figure}
 
-\href{run:movie1.mpg}{\includegraphics[width=1.0\textwidth,trim={0cm 15cm 0cm 1cm},clip]{ParaStudy_onlydata/dir.png}}
 
+
+
+%\end{columns}
+
+\href{run:images/movie1.mpg}{\includegraphics[width=1.0\textwidth,trim={0cm 15cm 0cm 1cm},clip]{ParaStudy_onlydata/dir.png}}
+
+$c=v+\sqrt{\frac {T} {m}}$   $T$ = Tension , $m$ = Mass per unit length, $v$ = line speed \\ $c$ = wave speed. Error $\%$ = 0.89 $\%$. 
 
 
 %\begin{block}{Analysis Statistics}
@@ -1645,6 +1747,7 @@ Unfortunately, the FEM discretization of the domain have huge number of nodes wh
 
 \end{frame}
 
+\begin{comment}
 
 \begin{frame}\frametitle{Study with sinusoidal displacement and load }
 %\frametitle{Some Dynamic analysis}
@@ -1655,7 +1758,7 @@ Along with previous loading, forces are applied at designated spots.
 \subfile{some_dyna_2.tex}
 %\caption{NAS277} \label{NAS277sch}
 \end{figure}
-\href{run:movie2.mpg}{\includegraphics[width=1.0\textwidth,trim={0cm 15cm 0cm 1cm},clip]{ParaStudy_onlydata/for.png}}
+\href{run:images/movie2.mpg}{\includegraphics[width=1.0\textwidth,trim={0cm 15cm 0cm 1cm},clip]{ParaStudy_onlydata/for.png}}
 
 
 
@@ -1666,6 +1769,11 @@ nT=1000 , nN = 1886 , nE = 1836, nDOF = 5640, Solution Time =182 s
 
 
 \end{frame}
+
+
+\end{comment}
+
+
 
 
 
@@ -1692,11 +1800,6 @@ nT=200 , nN = 1886 , nE = 1836, nDOF = 5640, Solution Time = 39s
 
 
 \end{frame}
-
-
-
-
-
 
 
 
@@ -1733,21 +1836,20 @@ nT=200 , nN = 1886 , nE = 1836, nDOF = 5640, Solution Time = 39s
 \begin{frame}\frametitle{Conclusion}
 
 \begin{itemize}
-\item In most of the cases the QUAD4 element performs better. Particular when there is point load and simply supported boundary condition.
-\item PAT element shows good convergence property for distributed load.
-\item Inclusion of axial velocity makes Coriolis and centripetal acceleration components appear in the equation which makes it gyroscopic.
-\item PAT element is unaffected by the low directional mesh density in direction perpendicular to the axial velocity. 
-\item The element size has to be very small only on the boundary where the Dirichlet load is applied and also at the direction of the
+\item In most of the cases the \textbf{QUAD4} element performs better. Particular when there is point load and simply supported boundary condition.
+\item \textbf{PAT} element shows good convergence property for distributed load.
+\item PAT element is unaffected by the low \textbf{directional mesh density} in direction perpendicular to the axial velocity. 
+\item The \textbf{element size} has to be \textbf{very small} only on the boundary where the Dirichlet load is applied and also at the direction of the
 line speed.
-\item FEM program converges to the solution produced by the Galarkin method. 
-\item Techniques like pre-factorization and Modal Superposition techniques drastically decreased the solution time.
+\item FEM program converges to the solution produced by the \textbf{Galarkin method}. 
+\item Techniques like\textbf{ pre-factorization and Modal Superposition techniques} drastically decreased the solution time.
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}\frametitle{Suggestions for future improvements}
 \begin{itemize}
-\item Better Shape function(MITC family)
+\item Better Shape function(MITC and BCIZ family of elements)
 \item Including non-linearity and Multi physics
 \item Including Contact between plate and rollers
 \item Better Linear algebra solver packages (LAPACK, cuBLAS ..)

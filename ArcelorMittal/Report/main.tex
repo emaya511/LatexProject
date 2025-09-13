@@ -52,7 +52,6 @@ citestyle=authoryear,
 \definecolor{mylilas}{RGB}{170,55,241}
 
 
-
 %%%% verbitm
 \usepackage[dvipsnames]{xcolor}
 
@@ -84,8 +83,15 @@ citestyle=authoryear,
 \setlength{\nomlabelwidth}{2.5cm}  % for nomenclature
 \renewcommand{\baselinestretch}{1.1}
 
+\definecolor{backcolour1}{rgb}{0.95,0.95,0.92}
+
+\newcommand{\codeword}[1]{%
+\texttt{\colorbox{backcolour1}{#1}}
+}
+
 
 \newcommand{\vect}[1]{\boldsymbol{#1}}
+
 \begin{document}
 
 
@@ -195,6 +201,7 @@ The Main objective of the internship is to create a Finite element program to pr
 
 
 
+
 %The Main objective of the internship is to create a Finite element program to predict the vibration of a 2D metal strip in the Hot-Dip Galvanization Process. Hot-Dip galvanization is a process to coat molten zinc metal in a steel plate in order to increase the corrosion resistance. For the process of applying the zinc coating, long steel is dipped in a Molten zinc bath. The steel strip is continuously moving in the galvanising line.  The steel plate is drawn out of the bath and passes between air-knife. Air knife is intended to remove excess zinc by blowing air at very high speed. Excess vibration in the steel plate causes an uneven air blow, which in turn affects the quality of the coating. The vibration can be countered to an extent by placing the electromagnets. The electromagnets operate based on the control algorithms. To create an effective control law, an efficient and accurate numerical method is required to test and validate the control law. Finite element is used as a numerical method since it is very accurate and easy to use. There are quite a few challenges in numerical modelling. The plate is very thin and it is highly stretched. The plate is also axially moving in the upward direction all the time. The Equation of motion is derived using the Hamilton Principle with the help of Euler - Lagrange formulation. Two plate theories are used to develop two distinct plate element. An element called 'PAT' triangle is created using Kirchhoff Plate theory, which is a thin plate theory. This element is C1 continuous and requires complex shape function to implement. Reissner Mindlin plate theory is formulated for both thin and thick plates. 'QUAD4' quadrangle element with 4 nodes is created using this plate theory. QUAD4 is C0 continuous which makes it one of the easiest to implement. For directly solving the dynamic system, a type of Newmark time integration algorithm is implemented.  Prefactorization technique is used to make it ten times faster than the regular algorithm. The FEM program is also capable of proving the FE matrices in space-state form so, that it can be solved directly in Simulink. To make the solution process even faster, The modal superposition technique is used. This technique created a reduced model from the high fidelity model. Object-Oriented Programming style is adapted to create a user-friendly interface. Many studies are conducted to evaluate the performance of the Elements. For the most cases, QUAD4 element shows good convergence to the analytical solution despite being the simpler one. 'PAT' element performs better only for the transverse distributed load. Elaborate mesh dependency study is also conducted. Mesh density has to be very fine at the boundaries where imposed Dirichlet load is applied, This is the important take away from the mesh dependency test. Using the knowledge from this test, an optimised Mesh is created which performs well in most cases. FEM program is compared with the existing Galerkin method for final evaluation.
 
 
@@ -300,7 +307,7 @@ title = {Reference}
 
 \begin{appendices}
 \subfile{app_A.tex}
-%\subfile{app_B.tex}
+\subfile{app_B.tex}
 
 \end{appendices}
 

@@ -1,25 +1,16 @@
 \begin{lstlisting}[language=matlab]
 
-    FEM.ImposeU( FEM. Up(2)  *  FEM.TS(1)  );
-    FEM.ImposeU( FEM. Up(1)   );
-
-    K1=10;
-    K2=2;
-    K3=10;
-    P1 = K1 * FEM.Pp(1).forT(0);
-    P2 = K2 *(FEM.Pp(1).forT(0)-FEM.Pp(1).forT(-1))/(FEM.T.forT(0)-FEM.T.forT(-1));
-    P3 = K3 * Int(FEM.Pp(1));
+     K1=10;      K2=2;       K3=10;
+     P1 = K1 * FEM.Pp(1).forT(0);
+     P2 = K2 *(FEM.Pp(1).forT(0)-FEM.Pp(1).forT(-1))/(FEM.T.forT(0)-FEM.T.forT(-1));
+     P3 = K3 * Int(FEM.Pp(1));
      FEM.ApplyF( -1 *  FEM.Fp(1)  * (P1 + P2 + P3) );
 
-
-     FEM.SetDomain([1 21 22 23 24],[1],'MITC4');
-    %
+     FEM.SetDomain([1 21 22 23 24],[1],'QUAD4');
      FEM.InitialX('zero');
      FEM.InitialV('zero');
     %
-     tic;
      FEM.SolveLU();
-     toc;
     %
      FEM.WritePos();
      FEM.WriteProbe();
@@ -28,3 +19,7 @@
      FEM.WriteF();
 
 \end{lstlisting}
+
+\begin{equation*}
+F(t_{n+1})=-(K_1 \cdot U(t_{n})+K_2\cdot\frac{\text{d}U}{\text{d}t}+K_3\cdot\int_{t_0}^{t_n} U dt)
+\end{equation*}
