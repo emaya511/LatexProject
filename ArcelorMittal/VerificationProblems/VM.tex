@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{cite}  %To add referce numbers to the file
+\usepackage[table,xcdraw]{xcolor}  %to include tables with colors
+\usepackage{tikz}  %for Creating Graphical images
+\usepackage{graphicx} % for inserting Graphics files
+	\graphicspath{{images/}{../images/}}
+\usepackage{subfiles}  % to make use of file tex project feature
+\usepackage{comment}  %for inserting comments
+\usepackage{calc}  %for doing arithmatic calculation
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{wrapfig} %to insert figure in a side and wrap text arround it
+\usepackage{pgfplots}
+\begin{document}
+\title{Verification Problems for FEM matlab program}
+\author{Emayavaramban ELANGO}
+\date{\today}
+\maketitle
+\tableofcontents
+
+\vspace{5cm}
+\subsubsection*{Formulae used: }
+
+\begin{equation}
+error \% = \mid \frac{w_{analytical}-w_{FEM}}{w_{analytical}} \mid \times 100
+\end{equation}
+
+\begin{equation}
+D = \frac{Eh^3}{12(1-\nu^2)}
+\end{equation} 
+\newpage
+
+\section{Triangular Plate With Point Load (VM34)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{VM34.tex}
+%\newpage
+
+\section{Simply Supported Circular plate with point load (TIM68)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{TIM68.tex}
+%\newpage
+\section{Build-in Circular plate with point load (TIM69)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{TIM69.tex}
+
+%\newpage
+\section{Natural Frequency of Square plate (VMP09)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{VMP09.tex}
+
+
+%\newpage
+\section{Square plate with distributed load(TIM116)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{TIM116.tex}
+
+%\newpage
+\section{Square plate with combined load(TIM381)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{TIM381.tex}
+
+%\newpage
+\section{Natural Frequency of Rectangular strip with axial load (NAS277)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{NAS277.tex}
+
+
+%\newpage
+\section{Error analysis of strip with various thickness (NAS277)}
+
+%\subfile{trialsub1.tex}
+
+\subfile{NAS277_2.tex}
+%\newpage
+\end{document}

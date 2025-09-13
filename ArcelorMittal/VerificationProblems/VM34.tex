@@ -1,0 +1,98 @@
+\documentclass[VM.tex]{subfiles}
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black!55},
+}
+
+% Drawing View
+\tikzset{dimetric2/.style={
+  x={(0.935cm,-0.28cm)},
+  y={(0.44cm, 0.312cm)},
+  z={(0.000cm, 0.943cm)},
+}}
+\begin{document}
+
+\subsubsection*{Description : }
+A triangular plate with point load (P) on one corner is tested and its opposite edge is build-in. 
+\subsubsection*{Reference : }
+C.O.Harris , Introduction to Stress Analysis, The Macmillan Co., pg:114, Pr:61. \\
+Solution Retrieved from Ansys verification problem (VM34).
+
+\subsubsection*{Material and Geometric data : }
+
+
+\begin{figure}[h!]
+\centering
+\subfile{VM34_DRAW.tex}
+\caption{VM34} \label{VM43sch}
+\end{figure}
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\caption{Input Data}
+\label{my-labelsdqf}
+\begin{tabular}{|ll|ll|ll|}
+\hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{C0C0C0}Material Property} & \multicolumn{2}{l|}{\cellcolor[HTML]{C0C0C0}Geometric Data} & \multicolumn{2}{l|}{\cellcolor[HTML]{C0C0C0}Loading Data} \\ \hline  \hline
+Young's Modulus ($E$)          & 3E7 $psi$         & Height ($h$)        & 20 $in$        & Point Load ($F_z$)        & 10 $lbs$         \\
+Poission's Ratio ($\nu$)       & 0.3         & Breath ($b$)        & 3 $in$          &         &      \\ 
+       &         & Thickness($t$)        & 0.5 $in$          &    &        \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\subsubsection*{Mesh and boundary condition : }
+
+
+
+
+
+\begin{figure}[h]
+\centering
+\minipage{0.8\textwidth}
+  \includegraphics[width=\linewidth]{VM34/VM34_geo.png}
+  \caption{Geomentry of the problem}\label{fig:awesome_image1}
+\endminipage\vfill
+\minipage{0.8\textwidth}
+  \includegraphics[width=\linewidth]{VM34/VM34_msh.png}
+  \caption{Discritization}\label{fig:awesome_image2}
+\endminipage\vfill
+\end{figure}
+
+
+
+
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\caption{FEM and Boundary condition data}
+\label{my-label}
+\begin{tabular}{|l|lll|l|lll|}
+\hline
+ \multicolumn{4}{l|}{\cellcolor[HTML]{C0C0C0}Direchlet Boundary} & \multicolumn{4}{l|}{\cellcolor[HTML]{C0C0C0}Neumann Boundary} \\ \hline \hline
+  Geo - Entity      & $w$          & $\theta _ x$     & $\theta _ y $    & Geo -  Entity         & $F_z$        & $M_x$        & $M_y$        \\ \hline line \{3\}                   & Fixed      & Fixed         & Fixed        & Point \{2\}                    & -10 $lbs$        &           &           \\ \hline
+\end{tabular}
+\end{table}
+\subsubsection*{Analytically solution : }
+The target analytically solution is given as -0.042677 $in$ at the corner where the loading is applied.
+\newpage
+\subsubsection*{Result and error analysis : }
+
+\begin{figure}[h!]
+\centering
+\minipage{0.8\textwidth}%
+  \includegraphics[width=\linewidth]{VM34/VM34_pos.png}
+  \caption{FEM solution plot}\label{fig:awesome_image3}
+\endminipage
+\end{figure}
+The maximum displacement of the domain is our solution . w displacement at point 2 is $ -0.0426677 in $.
+
+
+So the Error percentage is $ 0.00234 \% $. 
+
+\end{document}

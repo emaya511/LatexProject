@@ -1,0 +1,56 @@
+\documentclass[VM.tex]{subfiles}
+
+\begin{document}
+
+
+
+\tikzset{
+	load/.style   = {ultra thick,-latex},
+	stress/.style = {-latex},
+	dim/.style    = {latex-latex},
+	axis/.style   = {-latex,black!55},
+}
+
+\tikzset{dimetric3/.style={
+  x={(1cm,0cm)},
+  y={(0cm, 0.4cm)},
+  z={(0.000cm, 1cm)},
+}}
+\begin{tikzpicture}[dimetric3] 
+    \coordinate (O) at (0,-3,-2); 
+    \draw[axis] (O) -- ++(0.5,0,0) node[above left] {$x$};
+    \draw[axis] (O) -- ++(0,0.5,0) node[above right] {$y$};
+    \draw[axis] (O) -- ++(0,0,0.5) node[above] {$z$};
+    \draw[fill=gray!50,opacity=0.25] (0,0,0) circle (5);
+    \foreach \x in {0} {
+	    \foreach \y in {0} {
+		    \foreach \t in {1,20,...,360} {
+			    \fill[gray!90] ({5*sin(\t)},{5*cos(\t)},0) -- ({5*sin(\t)-0.2},{5*cos(\t)},-0.4) -- ({5*sin(\t)+0.2},{5*cos(\t)},-0.4)  -- cycle; 
+    %\fill[gray!90] (\x,\y,0) -- ({\x-0.4},\y,-0.2) -- ({\x-0.4},\y,0.2)  -- cycle;            		%\fill[gray!90] ({\x-0.2},\y,0) -- ({\x-0.4-0.2},\y,-0.2) -- ({\x-0.4-0.2},\y,0.2)  -- cycle; 
+     
+		    }}}
+
+
+
+			    \draw[load] (0,0,{2}) -- (0,0,{0})  node [right,xshift=1.5] {$F_z$} ;  
+			    %\draw[fill=gray!50] (0,0,3) circle (5);
+
+			    %\draw (2,2) circle (3cm);
+
+			    %\fill[top color=gray!50!black,bottom color=gray!10,middle color=gray,shading=axis,opacity=0.25] (0,0) circle (2cm and 0.5cm);
+			    %\fill[left color=gray!50!black,right color=gray!50!black,middle color=gray!50,shading=axis,opacity=0.25] (2,0) -- (2,6) arc (360:180:2cm and 0.5cm) -- (-2,0) arc (180:360:2cm and 0.5cm);
+			    %\fill[top color=gray!90!,bottom color=gray!2,middle color=gray!30,shading=axis,opacity=0.25] (0,6) circle (2cm and 0.5cm);
+			    %\draw (-2,6) -- (-2,0) arc (180:360:2cm and 0.5cm) -- (2,6) ++ (-2,0) circle (2cm and 0.5cm);
+			    %\draw[densely dashed] (-2,0) arc (180:0:2cm and 0.5cm);
+			    %\draw[thick,dashed,opacity=0.2] (0,3,0) -- (10,3,0);
+			    \draw (0,0,0) -- (0,0,1) ;
+			    \draw (5,0,0) -- (5,0,1) ;
+			    \draw[dim] (0,0,0.5) -- (5,0,0.5) node [midway,above] {$r$} ;
+
+
+\end{tikzpicture}
+
+
+
+
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass[VM.tex]{subfiles}
+
+\begin{document}
+
+\subsubsection*{Description : }
+Simply Supported Circular plate with point load at the center.  
+\subsubsection*{Reference : }
+S.Timoshenko , S . Woinowsky , Theory of Plates and Shells , pg:68, Article : 19 . 
+\subsubsection*{Material and Geometric data : }
+
+
+\begin{figure}[h!]
+\centering
+\subfile{TIM68_DRAW.tex}
+\caption{TIM68} \label{TIM68sch}
+\end{figure}
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\caption{Input Data}
+\label{my-labelTIM68}
+\begin{tabular}{|ll|ll|ll|}
+\hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{C0C0C0}Material Property} & \multicolumn{2}{l|}{\cellcolor[HTML]{C0C0C0}Geometric Data} & \multicolumn{2}{l|}{\cellcolor[HTML]{C0C0C0}Loading Data} \\ \hline  \hline
+Young's Modulus ($E$)          & 5E11 $Pa$         & Radius ($r$)        & 1 $m$        & Point Load ($F_z$)        & 1000 $N$         \\
+Poission's Ratio ($\nu$)       & 0.3         &  Thickness($t$)     &         0.01 $m$  &         &  \\ 
+            \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\subsubsection*{Mesh and boundary condition : }
+
+
+
+\begin{figure}[h!]
+\begin{subfigure}{.45\textwidth}
+\includegraphics[width=\linewidth,trim={8cm 0 8cm 0},clip]{TIM68/TIM68_geo.png}
+%\caption{Mode Shape 4}
+\end{subfigure} \hfill
+\begin{subfigure}{.45\textwidth}
+\includegraphics[width=\linewidth,trim={8cm 0 8cm 0},clip]{TIM68/TIM68_msh.png}
+%\caption{Mode Shape 5}
+\end{subfigure}
+\caption{Geomentry and Mesh of TIM68}
+\end{figure}
+
+
+
+
+
+
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\caption{FEM and Boundary condition data}
+\label{my-label}
+\begin{tabular}{|l|lll|l|lll|}
+\hline   \multicolumn{4}{l|}{\cellcolor[HTML]{C0C0C0}Direchlet Boundary} & \multicolumn{4}{l|}{\cellcolor[HTML]{C0C0C0}Neumann Boundary} \\ \hline \hline
+ Geo - \newline Entity      & $w$          & $\theta _ x$     & $\theta _ y $    & Geo - \newline Entity         & $F_z$        & $M_x$        & $M_y$        \\ \hline   
+line \{1,2,3,4\}                   & Fixed      & Free         & Free        & Point \{1\}                    & -1000 $N$        &           &           \\ \hline
+\end{tabular}
+\end{table}
+\subsubsection*{Analytically solution : }
+The target analytically solution given as
+
+\begin{equation}
+w_{at\_center} = \frac{F_z}{16 \pi D}\left[ \frac{(3+\nu)r^2}{1+\nu} \right]
+\end{equation} 
+
+
+\subsubsection*{Result and error analysis : }
+
+\begin{figure}[h!]
+\centering
+\minipage{0.8\textwidth}%
+  \includegraphics[width=\linewidth,trim={0 0 0 7cm},clip]{TIM68/TIM68_pos.png}
+  \caption{FEM solution plot}
+\endminipage
+\end{figure}
+The maximum displacement of the domain is our solution . w displacement at center is $ -0.0010983 in $.
+
+
+So the Error percentage is $ 0.42103 \% $. 
+
+\end{document}

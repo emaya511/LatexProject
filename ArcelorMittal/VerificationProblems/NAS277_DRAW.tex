@@ -1,0 +1,118 @@
+\documentclass[VM.tex]{subfiles}
+
+% Drawing View
+\begin{document}
+
+
+\tikzset{dimetric2/.style={
+  x={(0.7cm,-0.3cm)},
+  y={(0.6cm,0.4cm)},
+  z={(0cm,1cm)},
+}}
+
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black!55},
+}
+\begin{tikzpicture}[dimetric2] 
+      \coordinate (O) at (6,0,-3); 
+        \draw[axis] (O) -- ++(-0.5,0,0) node[above left] {$x$};
+       \draw[axis] (O) -- ++(0,0.5,0) node[above right] {$y$};
+        \draw[axis] (O) -- ++(0,0,0.5) node[above] {$z$};
+\fill[gray!90,opacity=0.2] (0,0,0.5) -- (10,0,0.5) -- (10,10,0.5) -- (0,10,0.5) -- cycle;
+\fill[gray!50,opacity=0.2] (0,0,-0.5) -- (10,0,-0.5) -- (10,10,-0.5) -- (0,10,-0.5) -- cycle; 
+\fill[gray!35,opacity=0.2] (0,0,-0.5) -- (10,0,-0.5) -- (10,0,0.5) -- (0,0,0.5) -- cycle; 
+\fill[gray!65,opacity=0.2] (0,0,-0.5) -- (0,10,-0.5) -- (0,10,0.5) -- (0,0,0.5) -- cycle; 
+(10,0,-0.5) -- (10,10,-0.5) -- (10,10,0.5) -- (10,0,0.5) -- cycle; 
+\fill[gray!35,opacity=0.2] (0,10,-0.5) -- (10,10,-0.5) -- (10,10,0.5) -- (0,10,0.5) -- cycle; 
+\draw[thick,dashed] (0,0,0) -- (10,0,0);
+\draw[thick,dashed,opacity=0.2] (0,0,0) -- (0,10,0);
+\draw[thick,dashed,opacity=0.2] (10,10,0) -- (0,10,0);
+\draw[thick,dashed] (10,10,0) -- (10,0,0);
+
+
+
+
+
+
+
+
+%\draw[fill=black] (0,0,0) circle (0.15 em);
+\foreach \x in {10} {
+	\foreach \y in {0,2,...,10} {
+    	    %\draw[white,myBG]  (thisNode) -- ++(0,4.25);
+            %\draw[black,very thick] (thisNode) -- ++(0,4.25);
+            \draw[fill=black] (\x,\y,0) circle (0.15 em);
+            %\fill[gray!90,opacity=0.9] (\x,\y,0) -- (\x+0.2,\y-0.2,0) -- \x-0.2,\y-0.2,0)  -- cycle; 
+            \fill[gray!90] (\x,\y,0) -- ({\x-0.2},\y,-0.4) -- ({\x+0.2},\y,-0.4)  -- cycle; 
+            %\fill[gray!90] (\x,\y,0) -- ({\x-0.4},\y,-0.2) -- ({\x-0.4},\y,0.2)  -- cycle; 
+            %\fill[gray!90] ({\x-0.2},\y,0) -- ({\x-0.4-0.2},\y,-0.2) -- ({\x-0.4-0.2},\y,0.2)  -- cycle; 
+            %\fill[gray!90] (\x,\y,0) -- ({\x},{\y+0.4},-0.2) -- ({\x},{\y+0.4},0.2)  -- cycle; 
+            % \fill[gray!90] (\x,{\y+0.2},0) -- ({\x},{\y+0.4+0.2},-0.2) -- ({\x},{\y+0.4+0.2},0.2)  -- cycle;
+        }
+    }
+    
+    
+    
+    
+\foreach \x in {0} {
+	\foreach \y in {0,2,...,10} {
+    	    %\draw[white,myBG]  (thisNode) -- ++(0,4.25);
+            %\draw[black,very thick] (thisNode) -- ++(0,4.25);
+            \draw[fill=black] (\x,\y,0) circle (0.15 em);
+            %\fill[gray!90,opacity=0.9] (\x,\y,0) -- (\x+0.2,\y-0.2,0) -- \x-0.2,\y-0.2,0)  -- cycle; 
+            \fill[gray!90] (\x,\y,0) -- ({\x-0.2},\y,-0.4) -- ({\x+0.2},\y,-0.4)  -- cycle; 
+            %\fill[gray!90] (\x,\y,0) -- ({\x-0.4},\y,-0.2) -- ({\x-0.4},\y,0.2)  -- cycle; 
+            %\fill[gray!90] ({\x-0.2},\y,0) -- ({\x-0.4-0.2},\y,-0.2) -- ({\x-0.4-0.2},\y,0.2)  -- cycle; 
+            %\fill[gray!90] (\x,\y,0) -- ({\x},{\y+0.4},-0.2) -- ({\x},{\y+0.4},0.2)  -- cycle; 
+            % \fill[gray!90] (\x,{\y+0.2},0) -- ({\x},{\y+0.4+0.2},-0.2) -- ({\x},{\y+0.4+0.2},0.2)  -- cycle;
+        }
+    }    
+
+\foreach \x in {10} {
+	\foreach \y in {0,2,...,10} {
+    	\foreach \z in {0} {
+    	    %\draw[white,myBG]  (thisNode) -- ++(0,4.25);
+            %\draw[black,very thick] (thisNode) -- ++(0,4.25);
+            %\draw[fill=black] (\x,\y,\z) circle (0.15 em);
+            %\fill[gray!90,opacity=0.9] (\x,\y,0) -- (\x+0.2,\y-0.2,0) -- \x-0.2,\y-0.2,0)  -- cycle; 
+			\draw[load] ({\x+0.1},\y,{\z}) -- ({\x+2},\y,{\z}) ;  
+			}
+        }
+    }
+    
+    \foreach \x in {-2} {
+	\foreach \y in {0,2,...,10} {
+    	\foreach \z in {0} {
+    	    %\draw[white,myBG]  (thisNode) -- ++(0,4.25);
+            %\draw[black,very thick] (thisNode) -- ++(0,4.25);
+            %\draw[fill=black] (\x,\y,\z) circle (0.15 em);
+            %\fill[gray!90,opacity=0.9] (\x,\y,0) -- (\x+0.2,\y-0.2,0) -- \x-0.2,\y-0.2,0)  -- cycle; 
+			\draw[load] ({\x+2},\y,{\z}) -- ({\x+0.1},\y,{\z}) ;  
+			}
+        }
+    }
+\draw[load] (10.1,0,{0}) -- (12,0,{0}) node [right] {$N_2$} ;  
+
+\draw (0,0,-0.5) -- (0,-1.5,-0.5) ;
+\draw (0,0,0.5) -- (0,-1.5,0.5) ;
+\draw[dim] (-0,-1,0.5) -- (-0,-1,-0.5) node [midway,left] {$t$} ;
+
+%\draw[thick,dashed,opacity=0.2] (0,3,0) -- (10,3,0);
+\draw (0,0,-0.5) -- (0,0,-1.5) ;
+\draw (10,0,-0.5) -- (10,0,-1.5) ;
+\draw[dim] (0,0,-1) -- (10,0,-1) node [midway,below] {$b$} ;
+
+
+%\draw[thick,dashed,opacity=0.2] (0,3,0) -- (10,3,0);
+\draw (10,0,-0.5) -- (10,0,-1.5) ;
+\draw (10,10,-0.5) -- (10,10,-1.5) ;
+\draw[dim] (10,0,-1) -- (10,10,-1) node [midway,below] {$a$} ;
+
+
+\end{tikzpicture}
+
+
+\end{document}
