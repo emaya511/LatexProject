@@ -1,0 +1,72 @@
+%\documentclass[ppt.tex]{subfiles}
+\documentclass[ppt.tex]{subfiles}
+%\usepackage{amsmath}
+%\usepackage{tikz}
+%\usetikzlibrary{hobby}
+
+
+\begin{document}
+
+\tikzset{
+  load/.style   = {ultra thick,-latex},
+  stress/.style = {-latex},
+  dim/.style    = {latex-latex},
+  axis/.style   = {-latex,black!55},
+}
+
+% Drawing View
+\tikzset{dimetric2/.style={
+  x={(0.6cm,0cm)},
+  y={(0cm,0.6cm)},
+  z={(0cm,0cm)},
+}}
+
+
+\begin{tikzpicture}[dimetric2] 
+      \coordinate (O) at (-0.5,-0.5,0); 
+        \draw[axis] (O) -- ++(1,0,0) node[below right] {$\xi$};
+       \draw[axis] (O) -- ++(0,1,0) node[above left] {$\eta$};
+        %\draw[axis] (O) -- ++(0,0,2.5) node[above] {$z$};
+
+\draw[thick] (0,0,0) -- (5,0,0);
+\draw[thick] (0,0,0) -- (0,5,0);
+\draw[thick] (5,5,0) -- (0,5,0);
+\draw[thick] (5,5,0) -- (5,0,0);
+
+\draw[thick,dashed] (2.5,0,0) -- (2.5,5,0);
+\draw[thick,dashed,opacity=0.2] (0,0,0) -- (0,5,0);
+\draw[thick,dashed,opacity=0.2] (5,5,0) -- (0,5,0);
+\draw[thick,dashed] (0,2.5,0) -- (5,2.5,0);
+
+\draw[fill=black] (0,0,0) circle (0.1 )node[above right] {(-1,-1)};
+\draw[fill=black] (5,0,0) circle (0.1 )node[above right] {(1,-1)};
+\draw[fill=black] (5,5,0) circle (0.1 )node[above right] {(1,1)};
+\draw[fill=black] (0,5,0) circle (0.1 )node[above right] {(-1,1)};
+
+      \coordinate (A) at (9.5,-0.5,0); 
+        \draw[axis] (A) -- ++(1,0,0) node[below right] {$x$};
+       \draw[axis] (A) -- ++(0,1,0) node[above left] {$y$};
+        %\draw[axis] (O) -- ++(0,0,2.5) node[above] {$z$};
+
+\draw[thick] (10,0,0) -- (15.3,0.5,0);
+\draw[thick] (10,0,0) -- (10.3,4.2,0);
+\draw[thick] (15.3,0.5,0) -- (16.2,5,0);
+\draw[thick] (10.3,4.2,0) -- (16.2,5,0);
+
+\draw[thick,dashed] (12.65,0.25,0) -- (13.25,4.6,0);
+%\draw[thick,dashed,opacity=0.2] (0,0,0) -- (0,5,0);
+%\draw[thick,dashed,opacity=0.2] (5,5,0) -- (0,5,0);
+\draw[thick,dashed] (10.15,2.1,0) -- (15.75,2.75,0);
+
+\draw[fill=black] (10,0,0) circle (0.1 )node[above right] {$n_1$};
+\draw[fill=black] (15.3,0.5,0) circle (0.1 )node[above right] {$n_2$};
+\draw[fill=black] (16.2,5,0) circle (0.1 )node[above right] {$n_3$};
+\draw[fill=black] (10.3,4.2,0) circle (0.1 )node[above right] {$n_4$};
+
+ \coordinate (B) at (11,1,0); 
+ \draw[axis] (B) -- ++(1,0.17,0) node[right] {$\xi$};   \draw[axis] (B) -- ++(0.12,1,0) node[above] {$\eta$};
+
+\end{tikzpicture}
+
+
+\end{document}

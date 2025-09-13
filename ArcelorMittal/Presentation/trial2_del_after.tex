@@ -1,0 +1,71 @@
+
+\documentclass[ppt2.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+\pgfplotsset{width=11cm,height=4cm,compat=1.16}
+\begin{tikzpicture}
+\begin{axis}[
+%title= Plot of W displacement VS Time,
+%xlabel={$Time (s)$},
+ylabel={$W\_disp (m)$},
+xmin=0, xmax=0.25,
+minor y tick num=1,
+%legend pos=outer north east,
+cycle list name = color list,
+%transpose legend,
+]
+
+%\addplot table{PN2.txt};
+%\addplot [blue] table{1E11/Dynamic_Pn2.txt};
+\addplot  table{ParaStudy_onlydata/Mesh_Dependency/meshes/2_0/Dynamic_Pn2.txt};
+%\addlegendentry{$SR$ = 1, ST = 9.5s}
+
+\addplot  table{ParaStudy_onlydata/Mesh_Dependency/meshes/2_1/Dynamic_Pn2.txt};
+%\addlegendentry{$SR$ = 1.005, ST = 12s}
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+
+\pgfplotsset{width=11cm,height=4cm,compat=1.16}
+\begin{tikzpicture}
+\begin{axis}[
+%title= Plot of W displacement VS Time,
+xlabel={$Time (s)$},
+ylabel={$W\_disp (m)$},
+xmin=0, xmax=0.25,
+minor y tick num=1,
+%legend pos=outer north east,
+cycle list name = color list,
+%transpose legend,
+legend columns=2,
+legend style={at={(0.5,-0.5)},anchor=north},
+]
+
+%\addplot table{PN2.txt};
+%\addplot [blue] table{1E11/Dynamic_Pn2.txt};
+\addplot  table{ParaStudy_onlydata/Mesh_Dependency/meshes/2_0/Dynamic_Pn2.txt};
+\addlegendentry{$SR$ = 1, ST = 9.5s}
+
+\addplot  table{ParaStudy_onlydata/Mesh_Dependency/meshes/2_1/Dynamic_Pn2.txt};
+\addlegendentry{$SR$ = 1.005, ST = 12s}
+
+\end{axis}
+\end{tikzpicture}
+%}
+%\end{figure}
+
+
+
+
+
+
+\end{document}
+

@@ -1,0 +1,69 @@
+\documentclass[ppt2.tex]{subfiles}
+%\documentclass{article}
+
+    % UNITS
+%\usepackage{siunitx}
+%\sisetup{per=slash, load=abbr}
+
+    % GRAPHICS
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+\pgfplotsset{width=8cm,height=4cm,compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}
+\pgfplotsset{
+	%width = 10cm,
+	%height = 4 cm,
+    scale only axis,
+    scaled x ticks=base 10:0,
+    xmin=0, xmax=3,
+    y axis style/.style={
+        yticklabel style=#1,
+        ylabel style=#1,
+        y axis line style=#1,
+        ytick style=#1
+   }
+}
+
+\begin{axis}[
+  axis y line*=left,
+  y axis style=blue!75!black,
+   ymin=-0.015, ymax=0.015,
+  xlabel=$Time$ ($s$),
+  ylabel={$W$(m) at $y=2.5m$}
+]
+\addplot[smooth,blue]  table{ParaStudy_onlydata/Dynamic_C1_P1.txt};
+%\addplot[smooth,mark=x,blue] 
+%  coordinates{
+%    (0,68.6)
+%    (0.0148,72) 
+%    (0.0295,68.6)
+%    (0.0441,53.4)
+%    (0.059,22.8) 
+%};
+\end{axis}
+
+\begin{axis}[
+  axis y line*=right,
+  axis x line=none,
+  ymin=-3000, ymax=3000,
+  ylabel={$F$(N) at $y=2.5m$},
+  y axis style=red!75!black
+]
+
+
+\addplot [smooth,red]  table{ParaStudy_onlydata/Dynamic_C1_Fapplied_1.txt};
+%\addplot[smooth,mark=*,red] 
+%  coordinates{
+%    (0,0)
+%    (0.0148,48) 
+%    (0.0295,66)
+%    (0.0441,66)
+%    (0.059,45.0) 
+%};
+\end{axis}
+
+\end{tikzpicture}
+\end{document}

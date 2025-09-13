@@ -1,0 +1,153 @@
+LOG file created *** 
+newstudy created 
+** Solving for mesh : strip1 
+
+ 
+ 	 **** MSHREAD **** 
+  
+Reading Msh file : meshes\strip1.msh 
+
+
+!!!!  WARNING  !!!!!! 
+Geometric Entites are Discarded, only Physical Entities are stored to apply BC 
+
+ 
+ 	 **** MSH  Statistics **** 
+  
+Number of Elements 	 : 7376  
+Number of Nodes 	 : 7315  
+Number of Physical En 	 : 8  
+
+
+Element 	 : 2line  
+Dimension 	 : 1  
+ElemNodes 	 : 2  
+NoofElem 	 : 32  
+
+
+Element 	 : 4quad  
+Dimension 	 : 2  
+ElemNodes 	 : 4  
+NoofElem 	 : 7344  
+
+
+Element 	 : 1point  
+Dimension 	 : 0  
+ElemNodes 	 : 1  
+NoofElem 	 : 0  
+
+
+!!!!  WARNING  !!!!!! 
+It is assumed that elements and Nodes are listed consequetly, If not, the code may not work 
+User may have to check for this arragement 
+
+ 
+ 	 **** PhyEn Statistics **** 
+  
+Number of PhyEn 	 : 8  
+
+
+
+Physical Entity      	 : 1  
+Physical Entity No   	 : 11  
+Physical Entity name 	 : "bottomline"  
+Physical Entity dim  	 : 1  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 2  
+Physical Entity No   	 : 12  
+Physical Entity name 	 : "topline"  
+Physical Entity dim  	 : 1  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 3  
+Physical Entity No   	 : 1  
+Physical Entity name 	 : "tophy"  
+Physical Entity dim  	 : 2  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 4  
+Physical Entity No   	 : 20  
+Physical Entity name 	 : "for"  
+Physical Entity dim  	 : 2  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 5  
+Physical Entity No   	 : 21  
+Physical Entity name 	 : "for1"  
+Physical Entity dim  	 : 2  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 6  
+Physical Entity No   	 : 22  
+Physical Entity name 	 : "for2"  
+Physical Entity dim  	 : 2  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 7  
+Physical Entity No   	 : 23  
+Physical Entity name 	 : "for3"  
+Physical Entity dim  	 : 2  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+
+
+
+Physical Entity      	 : 8  
+Physical Entity No   	 : 24  
+Physical Entity name 	 : "for4"  
+Physical Entity dim  	 : 2  
+Nos ELEM associated  	 : 0  
+ELEM assoc list      	  
+:   
+ **** Force **** 
+ 
+Physical Entity Referece = 12 
+Applied Dofs [ w = 1 , theta_x = 0 , theta_y  = 0 ] 
+Force load value = 0 
+ **** Force **** 
+ 
+Physical Entity Referece = 11 
+Applied Dofs [ w = 1 , theta_x = 0 , theta_y  = 0 ] 
+Force load value = 1 
+displacement imposed :  1    
+displacement imposed :  2    
+Domain Set :  1   Domain Set :  21   Domain Set :  22   Domain Set :  23   Domain Set :  24    
+ ** Initial Displacment set as zero **     
+ ** Initial velocity set as zero **     
+ ** SolveLU Method **     
+
+
+!!!!  WARNING  !!!!!! 
+ Time step size must of equal for all the steps, User must ensure it 
+ Incase time step is not constant use obj.Solve() method istead of obj.SolveLU() 
+ ** Creating ImpDof and ImpVal for displacement no : 1 **     
+ ** Creating ImpDof and ImpVal for displacement no : 2 **     
+ ** X matrix for storing displacement is created **     
+ ** V matrix for storing velocity is created **     
+ ** A matrix for storing acceleration is created **     

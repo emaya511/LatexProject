@@ -1,0 +1,164 @@
+\documentclass[9pt]{beamer}
+%\PassOptionsToPackage[dvipsnames]{xcolor}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{subfiles}
+\usepackage{graphicx} 
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{subcaption}
+\usepackage{amsmath}
+%\usepackage{sfmath,sansmathaccent}
+%\usepackage{sansmathaccent}
+
+
+
+%\usepackage[table,xcdraw]{xcolor}  %to include tables with colors
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+
+
+\setbeamertemplate{footline}[page number]
+\mode<presentation>{
+%\usetheme{Malmoe}
+%\usetheme{Antibes}
+%\usetheme{warsaw}
+\usetheme{Frankfurt}  %%
+%\usetheme{Dresden}
+%\usetheme{Madrid}
+%\usetheme{Malmoe} %
+%\usetheme{Ilmenau}
+}
+%\setbeamertemplate{footline}[\insertframenumber]
+
+%\newcommand*\oldmacro{}%
+%\let\oldmacro\insertshorttitle%
+%\renewcommand*\insertshorttitle{%
+% \oldmacro\hfill%
+% \insertframenumber\,/\,\inserttotlaframenumber}
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{Plan}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+
+\definecolor{secinhead}{RGB}{249,196,95}
+\definecolor{titlebg}{RGB}{51,51,51}
+\definecolor{orangecl}{RGB}{255,81,0}
+
+\setbeamercolor{secsubsec}{fg=secinhead,bg=black}
+\setbeamercolor{frametitle}{fg=orangecl,bg=titlebg}\setbeamercolor{structure}{bg=titlebg,fg=orangecl}
+
+\makeatletter
+\let\insertsupervisor\relax
+\newcommand\supervisortitle{Supervisor }
+\makeatletter
+\let\insertsupervisorinst\relax
+\newcommand\supervisorinsttitle{Supervisorinst}
+\mode<all>
+{
+  \newcommand\supervisor[1]{\def\insertsupervisor{#1}}
+  \titlegraphic{}
+}
+\mode<all>
+{
+  \newcommand\supervisorinst[1]{\def\insertsupervisorinst{#1}}
+  \titlegraphic{}
+}
+\defbeamertemplate*{title page}{supdefault}[1][]
+{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \includegraphics[width=0.25\linewidth]{ArcelorMittal_logo.png}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+%      \usebeamerfont{title}
+      \inserttitle\par%
+      \ifx\insertsubtitle\@empty\relax%
+      \else%
+        \vskip0.25em%
+        {%\usebeamerfont{subtitle}
+        \usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+    Presented By:\\
+%      \usebeamerfont{author}
+      \textbf{\insertauthor} \\
+%      \usebeamerfont{institute}
+      \insertinstitute
+    \end{beamercolorbox}
+   %     \begin{beamercolorbox}{institute}
+   %   \usebeamerfont{institute}\insertinstitute
+   % \end{beamercolorbox}
+    \ifx\insertsupervisor\relax\relax\else
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+%      \usebeamerfont{author}
+      \supervisortitle: \\ \textbf{~\insertsupervisor} \\
+%      \usebeamerfont{institute}
+      \insertsupervisorinst
+    \end{beamercolorbox}\fi
+    %\begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+    %  \usebeamerfont{institute}\insertinstitute
+    %\end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+%      \usebeamerfont{date}
+      \insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \endgroup
+  \vfill
+  
+}
+\setbeamertemplate{title page}[supdefault][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]\makeatother
+
+\title{Finite Element simulation of 2D metal strip in Hot-Dip galvanization Process}
+%\subtitle{Reissner Mindlin Plate}
+\author{Emayavaramban ELANGO}
+\supervisor{PHAM Van Thang}
+\supervisorinst{PHAM Van Thang }
+\institute{\'Ecole centrale De Nantes}
+\supervisorinst{ArcelorMittal Maizi\`eres Research SA }
+\date{\today}
+
+
+\begin{document}
+%\begin{frame}
+
+\frame{\titlepage}
+
+
+\begin{frame}
+\frametitle{Table of Content}
+\tableofcontents
+\end{frame}
+\section{Introduction}
+
+\subsection{Hot-Dip Galvanization Process}
+\begin{frame}
+\frametitle{Hot-Dip Galvanization Process}
+
+
+
+\begin{columns}
+\column{0.5\textwidth}
+hello world!!
+\column{0.5\textwidth}
+hello universe!!!
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+
+\end{document}

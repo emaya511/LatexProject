@@ -1,0 +1,115 @@
+\documentclass[9pt]{beamer}
+\usepackage{tikz}
+\usepackage{subfiles}
+\usepackage{graphicx} 
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{subcaption}
+%\usepackage[table,xcdraw]{xcolor}  %to include tables with colors
+
+\setbeamertemplate{footline}[page number]
+\mode<presentation>{
+%\usetheme{Malmoe}
+%\usetheme{Antibes}
+%\usetheme{warsaw}
+\usetheme{frankfurt}  %%
+%\usetheme{Dresden}
+%\usetheme{Madrid}
+%\usetheme{Malmoe} %
+%\usetheme{Ilmenau}
+}
+%\setbeamertemplate{footline}[\insertframenumber]
+
+%\newcommand*\oldmacro{}%
+%\let\oldmacro\insertshorttitle%
+%\renewcommand*\insertshorttitle{%
+% \oldmacro\hfill%
+% \insertframenumber\,/\,\inserttotlaframenumber}
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{Plan}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+
+\makeatletter
+\let\insertsupervisor\relax
+\newcommand\supervisortitle{Supervisor }
+\makeatletter
+\let\insertsupervisorinst\relax
+\newcommand\supervisorinsttitle{Supervisorinst}
+\mode<all>
+{
+  \newcommand\supervisor[1]{\def\insertsupervisor{#1}}
+  \titlegraphic{}
+}
+\mode<all>
+{
+  \newcommand\supervisorinst[1]{\def\insertsupervisorinst{#1}}
+  \titlegraphic{}
+}
+\defbeamertemplate*{title page}{supdefault}[1][]
+{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty\relax%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+    Presented By:\\
+      \usebeamerfont{author}\insertauthor \\
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+   %     \begin{beamercolorbox}{institute}
+   %   \usebeamerfont{institute}\insertinstitute
+   % \end{beamercolorbox}
+    \ifx\insertsupervisor\relax\relax\else
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\supervisortitle: \\ ~\insertsupervisor \\
+      \usebeamerfont{institute}\insertsupervisorinst
+    \end{beamercolorbox}\fi
+    %\begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+    %  \usebeamerfont{institute}\insertinstitute
+    %\end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \endgroup
+  \vfill
+}
+\setbeamertemplate{title page}[supdefault][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]\makeatother
+
+\title{Finite Element simulation of 2D metal strip in Hot-Dip galvanization Process}
+%\subtitle{Reissner Mindlin Plate}
+\author{Emayavaramban ELANGO}
+\supervisor{PHAM Van Thang}
+\supervisorinst{PHAM Van Thang }
+\institute{Ecole Centrale De Nantes}
+\supervisorinst{ArcelorMittal Research SA }
+\date{\today}
+
+
+\begin{document}
+%\title[Finite Element simulation of 2D metal strip in Hot-Dip galvanization Process]{FEM in plates}
+%\author{Emayavaramban Elango}
+%\institute[ECN]
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+ 
+ 
+ \end{document}

@@ -1,0 +1,45 @@
+\documentclass[11pt,tikz]{standalone}      
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+  %\begin{axis}
+    [
+   %   title={Supply \& Demand},
+      title style=% set it below
+      {
+        at={(current axis.south)},
+        anchor=north,
+        outer sep=.9cm,
+      },
+   %   xmin=0,
+   %   xmax=150,
+   %   ymin=0,
+   %   ymax=150,
+      % we set your preferences globally
+      domain=0:200,
+   %   samples=201,
+   %   unbounded coords=discard,
+      % this takes the marks off from the default style
+   %   every axis plot post/.style={mark=none},
+   % ]
+    %I like this syntax better :
+    \addplot {1750/x+30+x^10/(11^19)};
+    %
+    % this shows how to discard the default style (and gets rid of marks)
+    \addplot [] {750/x+30+x^10/(11^19)}; 
+    %
+    % below, we fix the `dimension too large`=`math overflow` warning 
+    \addplot +[domain=0:130] {30+x^10/(11^18)}; 
+    %
+    %\plot expression [
+    %   red,
+    %   unbounded coords=discard,
+    %   /pgfplots/domain=0:200,
+    %   /pgfplots/y domain=0:250, 
+    %   samples=50
+    %]      {1.2*30+1.2*x^10/(11^18))};
+  \end{axis}
+
+\end{tikzpicture}
+\end{document} 

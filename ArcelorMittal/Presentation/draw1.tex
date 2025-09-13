@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{hobby}
+
+\begin{document}    
+\begin{figure}
+\centering
+\begin{tikzpicture}[line width=.12pt,line cap = round,scale=1,transform shape]
+
+\foreach \x/\y/\z in {0/1/a,1/3/b,4/4/c,5/2/d,4.5/.5/e,4/0/f,3/.2/g,1/0/h}{
+\coordinate (\z) at (\x,\y);
+}
+\foreach \x/\y/\z in {4.5/4.5/i,5/4.8/j,7.7/5.6/k}{
+\coordinate (\z) at (\x,\y);
+}
+\foreach \x/\y/\z in {4.5/4.5/l,5/4.8/m,7.7/5.6/n}{
+\coordinate[xshift=1cm,yshift=-2cm] (\z) at (\x,\y);
+}    
+
+\path[draw,use Hobby shortcut,closed=true]
+(a) .. (b) .. (c) .. (d) .. (e) .. (f) .. (g) .. (h);
+
+\draw (c) to [quick curve through={(i) . . (j)}] (k)
+      (k) -- node[midway,left]{$\alpha$} (n)
+      (n) to [quick curve through={(m) . . (l)}] (d)
+      (m) -- node[midway,below,sloped]{$\operatorname{diam} (\mathcal{R}_i)$} (j)
+      (d) -- node[midway,below,sloped]{$\operatorname{diam} (\partial \varphi)$} (c);
+
+\node[xshift=12pt,yshift=-5pt] at (a.-30) {$\partial \phi^2$};
+\node[xshift=-3pt,yshift=-5pt] at (k.220) {$\Omega$};
+
+\end{tikzpicture}
+\caption{Some description for this figure}
+\end{figure}
+
+\end{document}
