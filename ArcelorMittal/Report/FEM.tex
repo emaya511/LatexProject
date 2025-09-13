@@ -6,13 +6,13 @@
 \centering
 \includestandalone[mode=image,build={quote={}}]{"tikz/FEMdomain"}
 %\caption{NAS277} \label{NAS277sch}
-\caption{FEM Domain}
+\caption{FEM domain}
 \label{fig:fem_domain}
 \end{figure}
 
-In finite Element the approximate function is the shape function also called as interpolation function. In here, the continuous domain is discretized into small elements. these elements are either shaped as triangles or quadrangles depending upon the need and choice.   
+In finite element the approximate function is the shape function also called as interpolation function. In here, the continuous domain is discretized into small elements. These elements are either shaped as triangles or quadrangles depending upon the need and choice.   
 
-The description of the domain is given in the the figure : \ref{fig:fem_domain}.  $\Omega$ is the total two dimensional domain in the x , y plane. The domain is discretized into small elements $\Omega^e$. $\Omega_1 \cdots \Omega_n$ are the regions where transverse distributed loads $(q_1 \cdots q_i)$ are described. $\partial \Omega$ is the boundary of the domain. $\partial \Omega _ d$ is part of the boundary where Dirichlet boundary condition is applied. 
+The description of the domain is given in the the figure.\ref{fig:fem_domain}.  $\Omega$ is the total two dimensional domain in the x , y plane. The domain is discretized into small elements $\Omega^e$. $\Omega^1 \cdots \Omega^n$ are the regions where transverse distributed loads $(q_1 \cdots q_i)$ are described. $\partial \Omega$ is the boundary of the domain. $\partial \Omega _ d$ is part of the boundary where Dirichlet boundary condition is applied. 
 \section{Shape-Functions}
 
 The Displacement field of the each element is the function of displacement of degree of freedom of each  node, which lets us have a finite number of unknowns to denote the over all displacement field of the domain. 
@@ -20,10 +20,10 @@ The Displacement field of the each element is the function of displacement of de
 Since it is a plate element, three independent degrees of freedom are described for each node. 
 \begin{equation*}
 \begin{split}
-u = \left[ w, \theta_x , \theta_y  \right]^T
+\tilde{\mathbf{u}} = \left[ w, \theta_x , \theta_y  \right]^T
 \end{split}
 \end{equation*}
-$w$ represents the transverse displacement. $\theta_x$ and $\theta_y$ represents the rotation. 
+$w$ represents the transverse displacement. $\theta_x$ and $\theta_y$ represents the rotations. 
 \begin{equation}
 \theta_x =\frac{\partial w}{\partial x} \qquad
  \theta_y  =\frac{\partial w}{\partial y}
@@ -37,9 +37,9 @@ The approximate displacement of the element is the given as sum of product of no
 
 
 
-\subsection{Ressigner Midlin Plate Element (Thick/thin plate)}
+\subsection{Reissner Mindlin Plate Element (Thick/thin plate)}
 
-From the previous chapter, it is understood that the Ressigner midlin plate is specifically developed for thick plate but the plate also performs reasonably well it thin plate situation but at the cost of fine refinement [plate and fem pg:290]. In this element all shear strain is considered, leaving only the out of plane noraml stress $\sigma_zz$ to be neglected. This element only requires $C^0$ continuity of the approximation  which drastically simplifies the implementation of the shape function (\cite{ANA_FEM_Plate_MIT}). The rotations $\theta_x$ and $\theta_y$ are treated as independent variable which in-turn lets us chose independent $C^0$ continuous shape functions for each independent degrees of Freedom.
+From the previous chapter, it is understood that the Ressigner Mindlin plate is specifically developed for thick plate but the plate also performs reasonably well it thin plate situation. In this element all shear strain is considered, leaving only the out of plane normal stress $\sigma_{zz}$ to be neglected. This element only requires $C^0$ continuity of the approximation,  which drastically simplifies the implementation of the shape function (\cite{ANA_FEM_Plate_MIT}). The rotations $\theta_x$ and $\theta_y$ are treated as independent variable which in-turn lets us chose independent $C^0$ continuous shape functions for each independent degrees of Freedom.
 
 \begin{equation}\label{eq:approx_disp_Ind}
 w =  \sum_{i=1}^{n} N_iw_i
@@ -51,7 +51,7 @@ w =  \sum_{i=1}^{n} N_iw_i
  \begin{equation*}
 \overline{\overline{N}}_i = \overline{N}_i = N_i
  \end{equation*}
-To begin with a simpler case, A simplest of all shape function, a QUAD4 shape function is selected  (\cite{MATLAB_FEM}). Despite it simplicity, the element performs relatively well but it suffers from a 'element lock' when it is too thin (\cite{doi:10.1002/nme.1620210213}).
+To begin with a simpler case, a simplest of all shape function, a QUAD4 shape function is selected  (\cite{MATLAB_FEM}). Despite it simplicity, the element performs relatively well but it suffers from a 'element lock' when it is too thin (\cite{doi:10.1002/nme.1620210213}).
 
  
 \begin{equation}\label{eq:MITC4_SF}
@@ -65,8 +65,8 @@ N_1  =\frac{1}{4}(1-\xi)(1 -\eta)\quad
   N_4 =\frac{1}{4}(1-\xi)(1+\eta)\end{split}
 \end{equation}
 
-The Parent element shape function is given above, which is represents the iso-parametric rectangle element. To describe any arbitrary physical quadrangle element, Jacobian transformation is adapted.
-using chain rule.
+The parent element shape function is given in equation.\ref{eq:MITC4_SF}, which is represents the iso-parametric rectangle element. To describe any arbitrary physical quadrangle element, Jacobian transformation is adapted.
+Using chain rule.
 \begin{equation}
 \dfrac{\partial N }{ \partial \xi } = 
 \dfrac{\partial N }{ \partial x }
@@ -104,7 +104,7 @@ J=\begin{bmatrix}
 \dfrac{ \partial y }{\partial \eta } \\
 \end{bmatrix}
 \end{equation}
-The inverse relation is provided by inverse of the  Jacobin matrix. the graphical representation of the Jacobin representation is given is given in the figure:\ref{fig:JacTrans} .
+The inverse relation is provided by inverse of the  Jacobin matrix. the graphical representation of the Jacobin representation is given is given in the figure.\ref{fig:JacTrans_quad} .
 \begin{equation}
 \left\{
 \begin{array}{r}
@@ -127,11 +127,11 @@ J^{-1}
 \centering
 
 \includestandalone[mode=image,build={quote={}}]{"tikz/iso"}
-\caption{Jacobian Transformation} 
-\label{fig:JacTrans}
+\caption{Jacobian transformation} 
+\label{fig:JacTrans_quad}
 \end{figure}
 
-The equation:\ref{eq:approx_disp} is represented in matrix form as 
+The equation.\ref{eq:approx_disp} is represented in matrix form as 
 \begin{equation*}
 \tilde{\mathbf{u}}= 
 \left\{
@@ -140,7 +140,7 @@ w \\
 \theta_x \\
 \theta_y \\
 \end{array} \right\}
-=
+\approx
 \sum_{i=1}^{nN}
 \left\{
 \begin{array}{r}
@@ -168,17 +168,17 @@ w_{4} \\
 \mathbf{N} \mathbf{\tilde{u}^e} 
 \end{equation*}
 
-Now, this FEM matrix from is easier to work with. this will be substituted into the weak form of the equation to get the over ODE in terms of FE matrices. The shape function is independent of time so derivative of $u$ with respect to time will not affect shape function.
+Now, this FEM matrix from is easier to work with. This will be substituted into the weak form of the equation to get the over an ODE in terms of FE matrices. The shape function is independent of time so derivative of $u$ with respect to time will not affect shape function.
 
 
 \begin{equation}
- \mathbf{ \dot{\tilde{u}} } = \mathbf{N}              \mathbf{\dot{\tilde{u}}^e}
+ \mathbf{ \dot{\tilde{u}} }  = \mathbf{N}              \mathbf{\dot{\tilde{u}}^e}
  \qquad  
  \mathbf{ \ddot{\tilde{u}} } = \mathbf{N}  \mathbf{\ddot{\tilde{u}}^e}
 \end{equation}
-The curvature term in the weak form is given in the equation below eq:\ref{eq:kappa}. it can be notices that the double derivative of the displacement shape function this matrix alone will produce singular stiffness matrix but along with shear strain term (eq: \ref{eq:shear})this will not have zero row or column. 
+The curvature term in the weak form is given in the equation below in equation.\ref{eq:kappa}. it can be noticed that the double derivative of the displacement shape function this matrix alone will produce singular stiffness matrix but along with shear strain term (equation.\ref{eq:shear})this will not have zero row or column. 
 \begin{equation}\label{eq:kappa}
-\mathbf{ \kappa } = 
+\vect{ \kappa }  \approx
 \begin{bmatrix}
 0 & \overline{N}_{1,1} & 0 & \cdots & 0 \\
 0&  0 & \overline{\overline{N}}_{1,2}  & \cdots & \overline{\overline{N}}_{4,2} 
@@ -197,7 +197,7 @@ w_1 \\
 
 
 \begin{equation} \label{eq:shear}
-\mathbf{\tilde{\epsilon}^S} = 
+\vect{\tilde{\epsilon}^S}  \approx 
 \begin{bmatrix}
 N_{1,1} & \overline{N}_{1} & 0 & \cdots & 0 
 \\
@@ -215,7 +215,7 @@ w_1 \\
 
 Terms to corresponding the axial strain is given in eq : \ref{eq:axial}
 \begin{equation}\label{eq:axial}
-\tilde{w}_{,2} = 
+\tilde{w}_{,2}  \approx
 \begin{bmatrix}
 {N}_{1,2} & 0 & 0 &{N}_{2,2} & \cdots & 0 \\ 
 \end{bmatrix} 
@@ -231,7 +231,7 @@ w_{2} \\
 \end{equation}
 Similarly,
 \begin{equation}
-\tilde{u}_{i,2} = 
+\vect{\tilde{u}}_{,2}  \approx
 \begin{bmatrix}
 {N}_{1,2} & 0 & 0 & \cdots & 0 \\
 0 & \overline{N}_{1,2} & 0 & \cdots & 0 \\ 
@@ -251,7 +251,7 @@ w_1 \\
 
 The FE Matrix for the body force is given as
 \begin{equation}
-\tilde{w} = 
+\tilde{w}  \approx
 \begin{bmatrix}
 {N}_{1} & 0 & 0 &{N}_{2} &\cdots & 0 
 \end{bmatrix} 
@@ -266,13 +266,12 @@ w_2 \\
 \end{array} \right\}=\mathbf{ N_f }\tilde{\mathbf{u}}^e
 \end{equation}
 
-[talk about the variation of the terms in ]
 \subsection{Kirchhoff plate element ( Thin Plate )}
 
 
-This plate element is more complicate to implement as the shape function required for it need to be $C^1$ continuous.
+This plate element is more complicated to implement as the shape function required for it need to be $C^1$ continuous.
 
-For Kirchhoff plates, quite a few elemets which passes patch test exists. \cite{doi:10.1002/nme.1620020210} and \cite{doi:10.1680/iicep.1964.10014} proposed easy method to generate stiffness matrix for rectangular and parallelogram elements. For generating any arbitrary quadrangle element the existing rectangle elements can be used by transformation, but they perform badly[\cite{ZIENKIE_BOOK_STRUCT_CH11}]. To overcome this issue, two or more triangle elements are joined to create a quadrangle elements. Triangle element uses different coordinate system called area coordinate system which has three axis.
+For Kirchhoff plates, quite a few elemets which passes patch test exists. \cite{doi:10.1002/nme.1620020210} and \cite{doi:10.1680/iicep.1964.10014} proposed easy method to generate stiffness matrix for rectangular and parallelogram elements. For generating any arbitrary quadrangle element the existing rectangle elements can be used by transformation, but they perform badly (\cite{ZIENKIE_BOOK_STRUCT_CH11}). To overcome this issue, two or more triangle elements are joined to create a quadrangle elements. Triangle element uses different coordinate system called area coordinate system (\ref{fig:areacord}) which has three axis.
 
 \subsubsection{Area Coordinates}
 
@@ -281,8 +280,8 @@ For Kirchhoff plates, quite a few elemets which passes patch test exists. \cite{
 \centering
 
 \includestandalone[mode=image,build={quote={}}]{"tikz/area_cod"}
-\caption{Jacobian Transformation} 
-\label{fig:JacTrans}
+\caption{Area coordinate} 
+\label{fig:areacord}
 \end{figure}
 
 
@@ -316,7 +315,7 @@ L_3
 \end{array} \right\}
 \end{equation}
 \begin{equation}
-\Delta = \begin{vmatrix}
+2A = \begin{vmatrix}
 1 & 1 & 1 \\
 x_1 & x_2 & x_3 \\
 y_1 & y_2 & y_3  
@@ -330,7 +329,7 @@ The linear transform between the derivative of coordinates area coordinate and C
 \frac{\partial}{\partial y}
 \end{array} \right\}
 =
-\frac{1}{2 \Delta}
+\frac{1}{4 A}
 \begin{bmatrix}
 y_2-y_3 & y_3-y_1 & y_1-y_2 \\
 x_2-x_3 & x_3-x_1 & x_1-x_2
@@ -350,7 +349,7 @@ Similarly, the relation for second derivative is given as.
 \frac{\partial ^ 2}{\partial x \partial y } &  \frac{\partial ^ 2}{\partial y ^2} 
 \end{bmatrix} 
 =
-\frac{1}{4 \Delta ^2}
+\frac{1}{16 A^2}
 \begin{bmatrix}
 y_2-y_3 & y_3-y_1 & y_1-y_2 \\
 x_2-x_3 & x_3-x_1 & x_1-x_2
@@ -370,8 +369,8 @@ y_1-y_2 &  x_1-x_2
 
 
 
-\subsubsection{PAT element Shape function}
-The triangle element with three nodes, is given here. This element passes patch test and it is referred from \cite{ZIENKIE_BOOK_STRUCT_CH11}. In literature this element is referd as PAT. The element was developed by \cite{specht}. The element is based in a polynomial expression of nine terms.
+\subsubsection{PAT element shape function}
+The triangle element with three nodes, is given here. This element passes patch test and it is referred from \cite{ZIENKIE_BOOK_STRUCT_CH11}. In literature this element is referred as PAT. The element was developed by \cite{specht}. The element is based on a polynomial expression of nine terms.
  
 
 \begin{equation}\label{eq:poly}
@@ -411,7 +410,7 @@ L_3^2L_1+\frac{1}{2}L_1L_2L_3(3(1-\mu_2)L_3-(1+3\mu_2)L_1+(1+3\mu_2)L_2) )
 \mu_3 = \frac{l_2^2-l_1^2}{l_3^2}
 \end{equation}
 
-$l_a$ is the length of the side which is opposite to the side a. The nine shape functions for this element using the polynomial expression \ref{eq:poly}.
+$l_a$ is the length of the side which is opposite to the edge a. The nine shape functions for this element using the polynomial expression (equation. \ref{eq:poly}).
 
 \begin{equation}
 N = 
@@ -440,7 +439,7 @@ The terms in the weak form is expressed in terms of Shape function and given bel
 
 
 \begin{equation*}
-\tilde{\mathbf{u}}= 
+\tilde{\mathbf{u}}  \approx 
 \left\{
 \begin{array}{r}
 w \\
@@ -469,12 +468,12 @@ w_2 \\
 
 
 
-the other terms is the weak form are also given given below. The strain caused by the axial loading is given below.
+The other terms is the weak form are also given as
 
 
 
 \begin{equation}\label{eq:kappa_KR}
-\mathbf{ \kappa } = 
+\vect{ \kappa }   \approx
 \begin{bmatrix}
 N_{1,11} & N_{2,11} & N_{3,11} & \cdots & N_{9,11} \\
 N_{1,22} & N_{2,22} & N_{3,22} & \cdots & N_{9,22} \\
@@ -491,7 +490,7 @@ w_1 \\
 \end{equation}
 
 \begin{equation}\label{eq:axial_KR}
-\tilde{w}_{,2} = 
+\tilde{w}_{,2}    \approx
 \begin{bmatrix}
 N_{1,2}  & N_{2,2}  & N_{3,2} & N_{4,2}  & \cdots & N_{9,2} \\
 \end{bmatrix} 
@@ -507,7 +506,7 @@ w_{2} \\
 \end{equation}
 
 \begin{equation}
-\tilde{u}_{i,2} = 
+\vect{\tilde{u}}_{,2}    \approx 
 \begin{bmatrix}
 N_{1,2}  & N_{2,2}  & N_{3,2}  & \cdots & N_{9,2} \\
 N_{1,22} & N_{2,22} & N_{3,22} & \cdots & N_{9,22} \\
@@ -527,7 +526,7 @@ w_1 \\
 
 The FE Matrix for the body force is given as
 \begin{equation}
-\tilde{w} = 
+\tilde{w}    \approx
 \begin{bmatrix}
 {N}_{1} & N_{2} & N_{3} &{N}_{4} &\cdots & N_{9} 
 \end{bmatrix} 
@@ -613,7 +612,7 @@ d \Omega
 \end{split} 
 \end{equation*}
 
-After rearranging them to their respective groups we get.
+After rearranging them to their respective groups.
 \begin{equation*}
 \left[ \mathbf{M^e}  \right] 
 \{ \ddot{\mathbf{u}} \}
@@ -679,23 +678,23 @@ where
 
 
 \subsection{Numerical Integration}
-For the numerical integration of the Finite element matrix, Gauss quadrature is used here. The integration for a element is provided by sum of product of Gauss weight and value of the term at the Gauss point \ref{eq:gauss}. 
+For the numerical integration of the Finite element matrix, Gauss quadrature is used here. The integration for a element is provided by sum of product of Gauss weight and value of the term at the Gauss point (equation.\ref{eq:gauss}). 
 
 
 \begin{equation} \label{eq:gauss}
 \begin{split}
 \int \int f(x,y) dx dy = 
- \sum_{i = 1}^{n_g}  w_i  \cdot f(ix_g,iy_g) 
+ \sum_{i = 1}^{n_g}  w^i  \cdot f(x_g^i,y_g^i) 
 \end{split}
 \end{equation}
 
-$n_g$ is the number of Gauss points. $w_i$ Gauss weight and $(ix_g,iy_g)$ is the Gauss coordinate. Gauss weights and points for each element is given in the table : \ref{tb:gauss}. Using Gauss quadrature information, new relation for element mass matrix is given in \ref{eq:gauss_Me}
+$n_g$ is the number of Gauss points. $w^i$ are Gauss weights and $(x_g^i,y_g^i)$ is the Gauss coordinate. Gauss weights and points for each element is given in the table . \ref{tb:gauss}. Using Gauss quadrature information, new relation for element mass matrix is given in equation . \ref{eq:gauss_Me}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-Element                & $n_g$ & Gauss Point $(ix_g,iy_g)$                                   & Gauss weight $(w_i)$   \\ \hline
+Element                & $n_g$ & Gauss Point $(x_g^i,y_g^i)$                                   & Gauss weight $(w^i)$   \\ \hline
 PAT                    & 3     & \{(1/2,1/2,0) (1/2,0,1/2) (0,1/2,1/2)\}       & \{1/3,1/3,1/3\} \\ \hline
 \multirow{2}{*}{QUAD4} & 4     & \{(0.5,0.5) (0.5,-0.5)(-0.5,0.5)(-0.5,-0.5)\} & \{1,1,1,1\}     \\ \cline{2-4} 
                        & 1     & \{(0,0)\}                                     & \{4\}           \\ \hline
@@ -708,7 +707,7 @@ PAT                    & 3     & \{(1/2,1/2,0) (1/2,0,1/2) (0,1/2,1/2)\}       &
 \left[ \mathbf{M^e}  \right] 
 =
 \sum_{i = 1}^{ng}
-\rho\left(w_i
+\rho\left(w^i
 \left[ \mathbf{N(i)}  \right]^T
 \left[ \mathbf{Z}  \right]
 \left[ \mathbf{N(i)}  \right] 
@@ -718,7 +717,7 @@ All the Element mass Matrices $\left[ \mathbf{M^e}  \right]$ are assembled in th
 
 
 
-\begin{equation}
+\begin{equation}\label{eq:final-ODE}
 \left[ \mathbf{M}  \right] 
 \{ \ddot{\mathbf{u}} \}
 +
@@ -734,7 +733,7 @@ All the Element mass Matrices $\left[ \mathbf{M^e}  \right]$ are assembled in th
 
 
 \section{Solution Methods}
-Since Matlab is used to program, all the necessary functions are already available with in matlab. To solve the static problems u=A/b function is used as it factorizes the matrix and solves them, which is much efficient than direct inversion of the A matrix. the find the natural frequency eigs function is used, which find the subspace of the eigen function. this function is very useful since we only ever need few eigen frequencies that the small. To solve the dynamic problem, New mark Time integration is used. The reason is that, this technique is unconditionally  stable and ability to provide numerical damping.
+Since Matlab is used to program, all the necessary functions are already available within MATLAB. To solve the static problems u=A/b function is used as it factorizes the matrix and solves them, which is much efficient than direct inversion of the A matrix. The find the natural frequency \textbf{'eigs'} function is used, which find the subspace of the eigen function. This function is very useful since we only ever need few eigen frequencies that the small. To solve the dynamic problem, New mark Time integration is used. The reason is that, this technique is unconditionally  stable and ability to provide numerical damping.
 
 
 
@@ -782,51 +781,51 @@ The main objective of the thesis is to code FEM that will be used as simulator f
 
 \subsection{State - Space Format}
 
-State - Space form is the widely used format for control study of a systemic system. state - state form is represented as first order ordinary differential equation eq:\ref{eq:SpaceState}. The dynamic system that is present here is a second order differential equation eq:{refer eq}. This Second order equation is converted to first order equation for which it will consistent to the  state space form. The another reason is that it is easier to represent input and output of the system in a MATLAB Simulink block.  
+State - Space form is the widely used format for control study of a dynamic system. State - state form is represented as first order ordinary differential equation (equation.\ref{eq:SpaceState}). The dynamic system that is present here is a second order differential equation.\ref{eq:final-ODE}. This Second order equation is converted to first order equation for which it will consistent to the  state space form. The another reason is that it is easier to represent input and output of the system in a MATLAB Simulink block.  
 
 \begin{equation}\label{eq:SpaceState}
-\dot{x}(t)=Ax(t)+B
+\vect{\dot{x}}(t)=\vect{A} \vect{x} (t)+\vect{B} (t)
 \end{equation}
-\textbf{B or Bu??}
+
 $x(t)$ is the state variable.
 
 \begin{equation}
-{x} = 
+\vect{x} = 
 \left\{
 \begin{array}{r}
-u(t)
+\vect{u}(t)
 \\
-\dot{u}(t)
+\vect{\dot{u}}(t)
 \end{array}
 \right\}
 \end{equation}
 using this the second order ODE is reprented in state - space form as
 
 \begin{equation}
-\dot{x} = \frac{d}{dt}
+\vect{\dot{x}} = \frac{d}{dt}
 \left\{
- \begin{array}{r}  u(t)  \\  \dot{u}(t) \end{array}
+ \begin{array}{r}  \vect{u}(t)  \\  \vect{\dot{u}}(t) \end{array}
 \right\}
 =
 \begin{bmatrix}
-0 & I \\
--\left[M\right] ^{-1} \left[K\right]  &   -\left[M\right] ^{-1} \left[C\right]
+0 & \vect{I} \\
+-\left[\vect{M}\right] ^{-1} \left[\vect{K}\right]  &   -\left[\vect{M}\right] ^{-1} \left[\vect{C}\right]
 \end{bmatrix}
 \left\{
 \begin{array}{r}
-u(t)
+\vect{u}(t)
 \\
-\dot{u}(t)
+\vect{\dot{u}}(t)
 \end{array}
 \right\}
 +
 \begin{bmatrix}
 0 \\
-\left[M\right] ^{-1} \left[F\right] 
+\left[\vect{M}\right] ^{-1} \left[\vect{F}\right] 
 \end{bmatrix}
 \end{equation}
 
-Unfortunately, the FEM discretization of the domain have huge number of nodes which means the system size will also be huge.Which creates its own problems. when an attempt to made to solve the full FEM model of the system it the simulink block would not converge. To over come this problem a the size of the model is reduced by using modal - superposition method. After using Modal - Superposition technique, drastic improvements in the solution time is observed but the loss of accuracy is not studied during the thesis.  
+Unfortunately, the FEM discretization of the domain have huge number of nodes which means the system size will also be huge.Which creates its own problems. When an attempt to made to solve the full FEM model of the system it the Simulink block would not converge. To overcome this problem a the size of the model is reduced by using modal - superposition method. After using Modal - Superposition technique, drastic improvements in the solution time is observed but the loss of accuracy is not studied during the thesis.  
 
 \begin{comment}
 
@@ -870,12 +869,12 @@ By doing this, the efficiency of the system increases drastically.
 \end{comment}
 \subsection{Object oriented Programming}
 
-In the Industry, to effectively and rapidly control the metal Strip, a sensor is placed which measures the vibration of the plate. Then the data is used to calculate the signal to be given to the electromagnets. The formula can be simple to complex. But the underlying concept is that force vector $F(t+1)$ which is to be applied is the function of displacement vectors $U(t) \cdots U(1)$ of previous time steps.
+In the Industry, to effectively and rapidly control the metal Strip, a sensor is placed which measures the vibration of the plate. Then the data is used to calculate the signal to be given to the electromagnets. The formula can be simple to complex, but the underlying concept is that force vector $F(t+1)$ which is to be applied is the function of displacement vectors $U(t) \cdots U(1)$ of previous time steps.
 
 
 
 
-where $K_1$ and $K_N$ are control parameters which are adjusted to change the properties of the control law. effectively testing such control laws is also very essential before implementing in the plant. To implement this, altering the code source file each time is not feasible may prone to error. So to provide a easy interface, Object oriented Programming is adapted. Forces, Displacements, Time series, Solver Time, Probes are the Matlab class. Number of Operator overloading functions are defined to operate between the objects of these classes. 
+Effectively testing such control laws is also very essential before implementing in the plant. To implement this, altering the code source file each time is not feasible may prone to error. So to provide a easy interface, Object oriented Programming is adapted. Forces, Displacements, Time series, Solver Time, Probes are the Matlab class. Number of Operator overloading functions are defined to operate between the objects of these classes. 
 
 
 

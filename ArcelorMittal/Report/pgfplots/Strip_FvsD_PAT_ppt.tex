@@ -1,0 +1,156 @@
+
+\documentclass{standalone}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+
+\def\mystruct{\vphantom{hg}}
+
+\pgfplotsset{
+	legend image with text/.style={
+		legend image code/.code={
+		\node[anchor = center] at (0.3cm,0cm) {#1};
+		}
+	},width=8cm,height=8cm,compat=1.16,
+}
+
+
+\begin{document}
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+%title={bla bla},
+xlabel={Mesh Density},
+ylabel={error },
+name=boundary,
+legend columns = 2,
+legend style = {
+		legend cell align = left,
+		},
+	legend pos = north east,
+		%xmin=0,xmax=1.2,ymin=-15,ymax=1
+]
+
+\addlegendimage{legend image with text = P1}
+\addlegendentry{}
+
+\addlegendimage{legend image with text = P2}
+\addlegendentry{}
+
+
+
+%P1 _ TRI _ D
+\addplot 
+[red,
+mark=x,mark options = {scale = 2,solid},
+]
+coordinates {(2,7.36826e-03)
+(4,2.04098e-03)
+(8,3.45600e-04)
+(12,0.00000e+00)
+
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+
+%P2 _ TRI _ D
+\addplot 
+[red,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(2,7.40007e-03)
+(4,2.12930e-03)
+(8,3.97941e-04)
+(12,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{$w_0=10^{-3}m$}
+
+
+
+
+
+
+
+%P1 _ TRI _ F
+\addplot 
+[red,
+mark=asterisk,mark options = {scale = 2,solid},
+]
+coordinates {(2,2.57487e-07)
+(4,6.46713e-08)
+(8,1.04969e-08)
+(12,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+
+
+
+%P2 _ TRI _F
+\addplot 
+[red,
+mark=o,mark options = {scale = 2,solid},
+]
+coordinates {(2,3.93467e-07)
+(4,1.08431e-07)
+(8,1.80326e-08)
+(12,0.00000e+00)
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{$F_0=1N$}
+
+
+%\addplot 
+%[
+%solid,mark options = {scale = 2,solid},
+%]
+%coordinates {(0,0)
+%(32,0)
+%};
+
+
+
+
+
+
+
+%\addplot 
+%[
+%solid,mark options = {scale = 2,solid},
+%]
+%coordinates {(0,0)
+%(32,0)
+%};
+
+
+\end{axis}
+
+%\node [draw,fill=white,inner sep=0pt,above left = %0.5em ] at (boundary.south east) {\small
+%\begin{tabular} {cc}
+%fel & zdf \\
+%\ref{pgfplots:C_SS_P_Tri} & %\ref{pgfplots:C_SS_P_Rec} \\
+%\end{tabular}
+
+%};
+
+
+\end{tikzpicture}
+
+
+\end{document}

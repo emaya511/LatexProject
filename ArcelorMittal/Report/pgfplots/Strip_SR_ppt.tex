@@ -1,0 +1,137 @@
+
+\documentclass{standalone}
+
+%Circular plate with distributed load
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepgfplotslibrary{patchplots}
+%\pgfplotsset{compat=1.14}
+
+
+\def\mystruct{\vphantom{hg}}
+
+\pgfplotsset{
+	legend image with text/.style={
+		legend image code/.code={
+		\node[anchor = center] at (0.3cm,0cm) {#1};
+		}
+	},width=15.5cm,height=7cm,compat=1.16,
+}
+
+
+\begin{document}
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+%title={bla bla},
+xlabel={Mesh Density Skewness Ratio(SR)},
+ylabel={error},
+name=boundary,
+legend columns = 2,
+legend style = {
+		legend cell align = left,
+		},
+	legend pos = north east,
+		%xmin=0,xmax=1.2,ymin=-15,ymax=1
+]
+
+\addlegendimage{legend image with text = QUAD4}
+\addlegendentry{}
+
+\addlegendimage{legend image with text = PAT}
+\addlegendentry{}
+
+%P1 _ REC
+\addplot 
+[blue,
+mark=x,mark options = {scale = 2,solid},
+]
+coordinates {(1,5.76819e-01)
+(1.025,6.47897e-02)
+(1.05,3.22331e-03)
+(1.075,1.40902e-03)
+(1.1,0.00000e+00)
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+
+%P1 _ TRI
+\addplot 
+[red,
+mark=x,mark options = {scale = 2,solid},
+]
+coordinates {(1,6.04116e-01)
+(1.025,7.60294e-02)
+(1.05,7.46650e-03)
+(1.075,3.85145e-04)
+(1.1,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{P1}
+
+
+
+
+%P2 _ REC
+\addplot 
+[blue,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(1,4.24656e-01)
+(1.025,4.58273e-02)
+(1.05,1.11426e-03)
+(1.075,1.78098e-03)
+(1.1,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{}
+
+
+
+%P2 _ TRI
+\addplot 
+[red,
+mark=triangle,mark options = {scale = 2,solid},
+]
+coordinates {(1,4.34903e-01)
+(1.025,5.29742e-02)
+(1.05,4.08999e-03)
+(1.075,8.99616e-04)
+(1.1,0.00000e+00)
+
+
+};  \label{pgfplots:S_N_Tri}
+\addlegendentry{P2}
+
+
+%\addplot 
+%[
+%solid,mark options = {scale = 2,solid},
+%]
+%coordinates {(0,0)
+%(32,0)
+%};
+
+
+\end{axis}
+
+%\node [draw,fill=white,inner sep=0pt,above left = %0.5em ] at (boundary.south east) {\small
+%\begin{tabular} {cc}
+%fel & zdf \\
+%\ref{pgfplots:C_SS_P_Tri} & %\ref{pgfplots:C_SS_P_Rec} \\
+%\end{tabular}
+
+%};
+
+
+\end{tikzpicture}
+
+
+\end{document}

@@ -1,0 +1,72 @@
+
+\documentclass[Para_study.tex]{subfiles}
+
+
+\begin{document}
+
+%\
+%\begin{figure}[h!]
+%\centering
+%\resizebox{0.8\textwidth}{!}{
+
+ \pgfplotsset{width=11cm,height=6cm,compat=1.16}
+\begin{tikzpicture}
+\begin{axis}[
+%title= Plot of W displacement VS Time,
+xlabel={$Time (s)$},
+ylabel={$W\_disp (m)$},
+xmin=0, xmax=0.25,
+minor y tick num=1,
+%legend pos=outer north east,
+cycle list name = color list,
+transpose legend,
+legend columns=3,
+legend style={at={(0.5,-0.1)},anchor=north},
+]
+
+%\addplot table{PN2.txt};
+%\addplot [blue] table{1E11/Dynamic_Pn2.txt};
+\addplot  table{Rho/6000/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 6000}
+
+\addplot table{Rho/6500/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 6500}
+
+\addplot table{Rho/6900/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 6900}
+
+\addplot table{Rho/6950/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 6950}
+
+\addplot table{Rho/7000/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 7000}
+
+\addplot table{Rho/7050/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 7050}
+
+\addplot table{Rho/7100/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 7100}
+
+\addplot table{Rho/7500/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 7500}
+
+\addplot table{Rho/8000/Dynamic_Pn2.txt};
+\addlegendentry{$\rho$ = 8000}
+
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+%}
+%\end{figure}
+
+
+
+
+
+
+\end{document}
+

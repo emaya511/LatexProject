@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\usepackage{pgfplots}
+
+\begin{document}
+
+%\
+%\begin{figure}[h!]
+%\centering
+%\resizebox{0.8\textwidth}{!}{
+
+
+\begin{tikzpicture}
+\begin{axis}
+\addplot table{Dynamic_P1.txt};
+\addplot table{Dynamic_P2.txt};
+
+\end{axis}
+\end{tikzpicture}

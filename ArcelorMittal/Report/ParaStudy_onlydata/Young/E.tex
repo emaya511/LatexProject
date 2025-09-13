@@ -1,0 +1,41 @@
+
+\documentclass[../Para_study.tex]{subfiles}
+
+
+\begin{document}
+
+%\
+%\begin{figure}[h!]
+%\centering
+%\resizebox{0.8\textwidth}{!}{
+
+ \pgfplotsset{width=7cm,compat=1.16}
+\begin{tikzpicture}
+\begin{axis}[
+title=Inv. cum. normal,
+xlabel={$x$},
+ylabel={$y$},
+xmin=0, xmax=0.25,
+minor y tick num=1,
+]
+
+%\addplot table{PN2.txt};
+%\addplot [blue] table{1E11/Dynamic_Pn2.txt};
+\addplot [red] table{Young/3E11/Dynamic_Pn2.txt};
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+%}
+%\end{figure}
+
+
+
+
+
+
+\end{document}
+

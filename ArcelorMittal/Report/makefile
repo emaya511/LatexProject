@@ -1,25 +1,25 @@
 # Main LaTeX file (without .tex)
-MAIN = main
+MAINS = main main_ppt
 OUTDIR = build
 MAKE = make
 MAKECLEAN = make clean
 
-LATEX = pdflatex -interaction=nonstopmode -halt-on-error -output-directory=$(OUTDIR)
+LATEX = pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(OUTDIR)
 BIB   = biber --output-directory $(OUTDIR)
 
 # Default target
-all: $(MAIN).pdf
+all: $(MAINS:=.pdf)
 
 # Rule to build PDF
-$(MAIN).pdf: $(MAIN).tex $(wildcard *.tex) $(wildcard *.bib)
+%.pdf : %.tex $(wildcard *.tex) $(wildcard *.bib)
 	$(MAKE) -C pgfplots
 	$(MAKE) -C tikz
 	mkdir -p $(OUTDIR)
-	$(LATEX) $(MAIN).tex
-	-$(BIB) $(MAIN)
-	$(LATEX) $(MAIN).tex
-	$(LATEX) $(MAIN).tex
-	mv $(OUTDIR)/$(MAIN).pdf  $(MAIN).pdf
+	$(LATEX) $*.tex
+	-$(BIB) $*
+	$(LATEX) $*.tex
+	$(LATEX) $*.tex
+	mv $(OUTDIR)/$*.pdf  $*.pdf
 
 # Clean build artifacts
 clean:

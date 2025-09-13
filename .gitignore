@@ -18,6 +18,7 @@
 *.synctex.gz
 *.synctex.gzr
 *.toc
+*.mpg
 
 # PDF outputs (comment out if you want to keep final PDF in Git)
 # *.pdf

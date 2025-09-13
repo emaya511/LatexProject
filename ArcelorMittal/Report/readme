@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+rm -rf *.aux
+rm -rf *.bbl
+rm -rf *.bcf
+rm -rf *.blg
+rm -rf *.lof
+rm -rf *.log
+rm -rf *.nlo
+rm -rf *.run.xml
+rm -rf *.toc
+rm -rf *.synctex.gzr
+rm -rf *.pdf
+rm -rf *.ist
+rm -rf *.nls
+rm -rf *.ilg
+rm -rf *.lot
+rm -rf *.dvi
+=======
 rm *.aux
 rm *.bbl
 rm *.bcf
@@ -14,6 +32,7 @@ rm *.nls
 rm *.ilg
 rm *.lot
 rm *.dvi
+>>>>>>> d32537b84150be2aad1a71103347a7cb9d9c172e
 
 
 rm -r kir

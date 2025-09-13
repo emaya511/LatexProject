@@ -3,7 +3,7 @@ TEXS := $(wildcard *.tex)
 PDFS := $(TEXS:.tex=.pdf)
 OUTDIR = build
 
-LATEX = pdflatex -interaction=nonstopmode -halt-on-error -output-directory=$(OUTDIR)
+LATEX = pdflatex -interaction=nonstopmode -file-line-error -halt-on-error -output-directory=$(OUTDIR)
 
 #Default targets
 all: $(PDFS)

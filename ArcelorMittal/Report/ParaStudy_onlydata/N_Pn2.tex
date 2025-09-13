@@ -1,0 +1,69 @@
+
+\documentclass[Para_study.tex]{subfiles}
+
+
+\begin{document}
+
+%\
+%\begin{figure}[h!]
+%\centering
+%\resizebox{0.8\textwidth}{!}{
+
+
+ \pgfplotsset{width=11cm,height=6cm,compat=1.16}
+\begin{tikzpicture}
+\begin{axis}[
+%title= Plot of W displacement VS Time,
+xlabel={$Time (s)$},
+ylabel={$W\_disp (m)$},
+xmin=0, xmax=1,
+minor y tick num=1,
+%legend pos=outer north east,
+cycle list name = color list,
+transpose legend,
+legend columns=2,
+legend style={at={(0.5,-0.1)},anchor=north},
+]
+
+%\addplot table{PN2.txt};
+%\addplot [blue] table{1E11/Dynamic_Pn2.txt};
+%\addplot  table{N/0E1/Dynamic_Pn2.txt};
+%\addlegendentry{N = 0E1}
+
+%\addplot  table{N/1E2/Dynamic_Pn2.txt};
+%\addlegendentry{N = 1E2}
+
+%\addplot  table{N/1E3/Dynamic_Pn2.txt};
+%\addlegendentry{N = 1E3}
+
+ \addplot  table{N/1E4/Dynamic_Pn2.txt};
+ \addlegendentry{N = 1E4}
+
+ \addplot  table{N/1E5/Dynamic_Pn2.txt};
+ \addlegendentry{N = 1E5}
+
+ \addplot  table{N/1E6/Dynamic_Pn2.txt};
+ \addlegendentry{N = 1E6}
+
+ \addplot  table{N/1E7/Dynamic_Pn2.txt};
+ \addlegendentry{N = 1E7}
+
+ \addplot  table{N/3E7/Dynamic_Pn2.txt};
+ \addlegendentry{N = 3E7}
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+%}
+%\end{figure}
+
+
+
+
+
+
+\end{document}
+

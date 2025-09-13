@@ -1,0 +1,8 @@
+TYPE 		= Linear_Isotropic
+UNIT 		= SI
+E    		= 1E11
+NU   		= 0.25
+RHO  		= 7100
+N   		= 3E7
+V   		= 5
+THICKNESS 	= 0.001

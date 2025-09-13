@@ -2,19 +2,19 @@
 \begin{document}
 \chapter{Axially Moving Plate formulation}
 
-A Plate is a structure, traditionally flat with the thickness much smaller than other dimensions. Trusses and Beams are the first to be developed as structures. For trusses and beams, the cross-sectional area is much smaller compared to the length, which makes them one-dimensional structure. For the complex geometries like domes and roofs, beam are not sufficient. So, the plates are developed. Plate and shells theories were around for many decades. Even still, they are currently researched and new elements are developed. Because the plates are computational less expensive than solids and more complex than beams, they are very attractive in many applications.  In here, our main goal is to develop the weak form of an axially moving plate. For the development of axially moving plates, Extended Hamilton principle is used to derive the equation of motion.  
+A plate is a structure, traditionally flat with the thickness much smaller than other dimensions. Trusses and Beams are the first to be developed as structures. For trusses and beams, the cross-sectional area is much smaller compared to the length, which makes them one-dimensional structure. For the complex geometries like domes and roofs, beam are not sufficient. So, the plates are developed. Plate and shells theories were around for many decades. Even still, they are currently researched and new elements are developed. Because the plates are computational less expensive than solids and more complex than beams, they are very attractive in many applications.  In here, main goal is to develop the weak form of an axially moving plate. For the development of axially moving plates, Extended Hamilton principle is used to derive the equation of motion.  
 
 
 \begin{figure}[ht!]
 \centering\includestandalone[mode=image,build={quote={}}]{"tikz/domain"}
-\caption{Description of Domain}
+\caption{Description of domain}
 \label{fig:Domain}
 \end{figure}
 
-A rectangular flat domain of plate with axial tension $N_y $ is shown in the figure : \ref{fig:Domain}. $\Omega$ is the Two-dimensional domain strictly in the x-y plane. The plate has a thickness of $h$, Length $L$ and width $W$. The plate is traveling in the y-direction at velocity $V_y$. $\Omega_1 \cdots \Omega_i$ are the regions in $\Omega$ where transversal distributed loads $q_1 \cdots q_i$ are applied. This is a thin plate which means $h << L,W $. 
+A rectangular flat domain of plate with axial tension $N_y $ is shown in the figure.\ref{fig:Domain}. $\Omega$ is the two-dimensional domain strictly in the x-y plane. The plate has a thickness of $h$, Length $L$ and width $B$. The plate is travelling in the y-direction at velocity $V$. $\Omega^1 \cdots \Omega^i$ are the regions in $\Omega$ where transversal distributed loads $q_1 \cdots q_i$ are applied. This is a thin plate which means $h << L,B $. 
 
  \section{Hamilton principle}
-The Equation of Motion of the plate is derived using the Hamilton principle. In this case, the material is moving. So a modified form of the Hamilton principle is taken \cite{HAM_MASS_VAR}.
+The equation of motion of the plate is derived using the Hamilton principle. In this case, the material is moving. So a modified form of the Hamilton principle is taken from \cite{HAM_MASS_VAR}.
 
  \begin{equation}\label{eq:HAM_P}
  \delta H=\int_{t_0}^{t_1} \left( \delta U - \delta K + \delta W + \delta M \right) dt  = 0  
@@ -30,23 +30,24 @@ Here, $\mathbf{v}$ is the total velocity vector of the plate. $M$ becomes zero b
 
 \section{Plate Theory}
 
-Plate Theories are formulated by considering some clever assumptions. These assumptions help in simplifying the plate from solids. One of the main assumptions is that the plate thickness does not change after deformation. From this assumption, it is clear that the axial strain $\epsilon_{zz}$ in $z$ direction is not considered. $\sigma_{zz}$ is also neglected because it is very small. But loads in $z$ direction are not neglected. These loads won't contribute to $\sigma_{zz}$ instead they cause bending of the plate. Some plate theories neglect any strain corresponding to $z$ direction. These differences in assumptions cause variations in their properties, which will be discussed in the coming sections. Another assumption is that during the absence of axial deformation, any point in the mid-plane only moves either in an upward or downward direction (fig:\ref{fig:plate_def}). The middle plane is initially flat and its equal distance from the upper and lower faces. Another important assumption is that the flat plane normal to mid-plane will always be a flat plane, they won't distort. 
+Plate theories are formulated by considering some clever assumptions. These assumptions help in simplifying the plates from solids. One of the main assumptions is that the plate thickness does not change after deformation. From this assumption, it is clear that the axial strain $\epsilon_{zz}$ in $z$ direction is not considered. $\sigma_{zz}$ is also neglected because it is very small. But loads in $z$ direction are not neglected. These loads won't contribute to $\sigma_{zz}$ instead they cause bending of the plate. Some plate theories neglect any strain corresponding to $z$ direction. These differences in assumptions cause variations in their properties, which will be discussed in the coming sections. Another assumption is that during the absence of axial deformation, any point in the mid-plane only moves either in an upward or downward direction (figure.\ref{fig:plate_def}). The middle plane is initially flat and its equal distance from the upper and lower faces. Another important assumption is that the flat plane normal to mid-plane will always be a flat plane, they won't distort. 
 
 \begin{figure}[ht!]
 \centering\includestandalone[mode=image,build={quote={}}]{"tikz/Plate_Theory"}
-\caption{A plate under bending Deformation}
+\caption{A plate under bending deformation}
 \label{fig:plate_def}
 \end{figure}
 
  Using these assumptions, the displacement vector of the plate is given as \ref{eg:disp_vec_full}.
-
- \begin{align}\label{eg:disp_vec_full}
+\begin{equation}\label{eg:disp_vec_full}
+ \begin{split}
 u_1 \left( x, y ,z\right) & =  u \left( x ,y\right) - z \theta_x \left(x,y\right) \\
 u_2 \left( x, y ,z\right) & =  v \left( x, y \right) - z \theta_y \left(x,y\right)\\
 u_3 \left( x, y ,z\right) & =  w \left(x, y \right) 
-\end{align}
+\end{split}
+\end{equation}
 
- u(x) and v(y) axial displacements are  neglected. This is because of the reason that the rollers in the top and bottom stay in one position. The axial stress is caused by the differences in material feed in the top and bottom rollers. This axial stress only affects the transverse deformation, not the axial deformation. It is should be noted that the axial stress is applied to increase the bending natural frequency of the plate. From the eq: \ref{eg:disp_vec}, It is can be noted that all the components of the displacement vectors are the functions of $w$ direction displacement. 
+ u(x) and v(y) axial displacements are  neglected. This is because of the reason that the rollers in the top and bottom positions stays in one position. The axial stress is caused by the differences in material feed in the top and bottom rollers. This axial stress only affects the transverse deformation, not the axial deformation. It is should be noted that the axial stress is applied to increase the bending natural frequency of the plate. From the equation.\ref{eg:disp_vec}, It is can be noted that all the components of the displacement vectors are the functions of $w$ direction displacement only. 
 
 \begin{align}\label{eg:disp_vec}
 u_1  & =  - z \theta_x \left(x,y\right) &
@@ -69,22 +70,22 @@ u_3  & =  w \left(x, y \right)
 
 \subsection{Reissner - Mindlin plate}
 
-The Reissner Mindlin plate theory is developed for the thick plates but be used for thin plates with caution.  As the thickness tends to zero this plate theory diverges from the thin plate[\cite{PlateandFEM}]. For Reissner Mindlin plate theory, the line normal to the middle plate will not be necessarily normal after deformation but will be straight $\phi \neq 0$ see figure: \ref{fig:plate_def}. Here, $\phi_x$ and $\phi_y$ are the angles between plane normal to middle plane and plane of actual deformation.  
+The Reissner Mindlin plate theory is developed for the thick plates but can be used for thin plates with caution.  As the thickness tends to zero this plate theory diverges from the thin plate(see. \cite{PlateandFEM}). For Reissner Mindlin plate theory, the line normal to the middle plate will not necessarily be normal after deformation, but will be straight $\phi \neq 0$ (see figure: \ref{fig:plate_def}). In equation.\ref{eq:thetaRM}, $\phi_x$ and $\phi_y$ are the angles between plane normal to middle plane and plane of actual deformation.  
 
-\begin{align}
+\begin{align}\label{eq:thetaRM}
 \theta_x  = \frac{\partial w }{\partial x} + \phi_x \quad & \quad
 \theta_y  = \frac{\partial w }{\partial y} + \phi_y
 \end{align}
 
 \section{Potential Energy}
 
-The Total strain energy $U$ is given as.
+The total potential strain energy $U$ is given as.
 
 \begin{equation}
 U=\frac{1}{2} \int\int\int_\Gamma \left(\vect{\epsilon}\right)^T \vect{\sigma} d \Gamma
 \end{equation}
 
-$\epsilon$ is the strain tensor, $\sigma$ is the stress tensor and $\left( \cdot \right)^T$ denotes transpose of a matrix. The total strain energy is divided into three different terms. 
+$\vect{\epsilon}$ is the strain tensor, $\vect{\sigma}$ is the stress tensor and $\left( \cdot \right)^T$ denotes transpose of a matrix. The total strain energy is divided into three different terms. 
 
 
 \begin{equation}
@@ -98,13 +99,19 @@ B,S,A on the superscript indicates bending, shear and axial components of the st
 The strain tensor is given as 
 
 \begin{equation}\label{eq:straintensor}
-\vect{\epsilon}_{ij} = \frac{1}{2} \left(  \vect{u}_{i,j} +  \vect{u}_{j,i} \right) \qquad i,j \in 1,2,3
+\vect{\epsilon}
+=
+\frac{1}{2} (\vect{\nabla u} + (\vect{\nabla u})^T)
 \end{equation}
+%
+%\begin{equation}\label{eq:straintensor}
+%\vect{\epsilon}_{ij} = \frac{1}{2} \left(  %\vect{u}_{i,j} +  \vect{u}_{j,i} \right) \qquad i,j \in 1,2,3
+%\end{equation}
 
-expanding eq: \ref{eq:straintensor} gives eq: \ref{eq:straintensor_full}.
+expanding equation.\ref{eq:straintensor} gives equation.\ref{eq:straintensor_full}.
 
 \begin{align} \label{eq:straintensor_full}
-\vect{\epsilon}_{ij} =  
+\vect{\epsilon} =  
 \begin{bmatrix}
  -z \dfrac{\partial w^2 }{\partial x^2} 
  & 
@@ -124,7 +131,7 @@ expanding eq: \ref{eq:straintensor} gives eq: \ref{eq:straintensor_full}.
 \end{bmatrix}
 \end{align}
 
-The strain tensor is separated into to respective terms. The bending strain is given in eq:\ref{eq:bendingstrain}. 
+The strain tensor is separated into to respective terms. The bending strain is given in equation.\ref{eq:bendingstrain}. 
 
 \begin{align}\label{eq:bendingstrain}
 \vect{\epsilon}^B = -z
@@ -150,7 +157,7 @@ $\vect{\kappa}$ is the curvature of a plate. The shear strain is separated as.
 \end{bmatrix}
 \end{align}
 
-For the Kirchhoff plate this term vanishes, which makes sense as the shear strain is not indented to be included. But for the Reissner - Mindlin plate this term does not vanish and gives \ref{eq:shear in RM}, 
+For the Kirchhoff plate this term vanishes, which makes sense as the shear strain is not indented to be included. But for the Reissner - Mindlin plate this term does not vanish and gives equation.\ref{eq:shear in RM}, 
 \begin{align}\label{eq:shear in RM}
 \vect{\epsilon}^S = \dfrac{1}{2}
 \begin{bmatrix}
@@ -160,8 +167,7 @@ For the Kirchhoff plate this term vanishes, which makes sense as the shear strai
 \end{bmatrix}
 \end{align}
 
-Only the axial strain in the y-direction is considered  eq: \ref{eq:axial_strain}[\cite{JianLi2012}]. This term is a nonlinear strain term. eq:\ref{eq:axial_strain} helps us provide the direct relation between axial stress and lateral deformation $w$.  Because of a special assumption, this term will not be nonlinear in the final weak form. The assumption is discussed in the following section. 
-
+Only the axial strain in the y-direction is considered  equation.\ref{eq:axial_strain}(\cite{JianLi2012}). This term is a non-linear strain term. equation.\ref{eq:axial_strain} helps us provide the direct relation between axial stress and lateral deformation $w$.  Because of a special assumption, this term will not be non-linear in the final weak form. The assumption is discussed in the following section. 
 \begin{align}\label{eq:axial_strain}
 \vect{\epsilon}^A = 
  \left( \dfrac{\partial w}{\partial y} \right)^2
@@ -172,10 +178,10 @@ Only the axial strain in the y-direction is considered  eq: \ref{eq:axial_strain
 
 \subsection{Constitute law}
 
-The Hooke's law for the linear isotropic material is considered. the material is considered to be homogeneously distributed. The stress-strain relation for shear and bending is given separately \cite{ShellsandPlates_Gould}.
+The Hooke's law for the linear isotropic material is considered. The material is considered to be homogeneously distributed. The stress-strain relation for shear and bending is given separately (\cite{ShellsandPlates_Gould}).
 
 \begin{equation}
-\sigma^B = \begin{bmatrix}
+\vect{\sigma}^B = \begin{bmatrix}
 \sigma_{11}
 \\
 \sigma_{22}
@@ -198,14 +204,15 @@ E & \nu E & 0
  \epsilon_{12}
 \end{bmatrix}
 =
-D \epsilon^B
+\vect{D}
+\vect{ \epsilon}^B
 \end{equation}
 
 
 $E$ is Young's modulus, $\nu$ is the Poisson's ratio and $G$ is the shear modulus which is given by $G=E / 2 ( 1+\nu ) $. The shear stress and strain relation is given as
 
 \begin{equation}
-\sigma^S = \begin{bmatrix}
+\vect{\sigma}^S = \begin{bmatrix}
 \sigma_{31}
 \\
  \sigma_{32}
@@ -222,15 +229,15 @@ $E$ is Young's modulus, $\nu$ is the Poisson's ratio and $G$ is the shear modulu
 \epsilon_{32}
 \end{bmatrix}
 =
-D_c \epsilon^S
+\vect{D_c} \vect{\epsilon}^S
 \end{equation}
 
-$K$ is the shear correction factor \cite{StatAndDynaforshearcorrect}. Shear correction factor value of 5/6 is used for this application \cite{WANG1999467}.
+$K$ is the shear correction factor (\cite{StatAndDynaforshearcorrect}). Shear correction factor value of 5/6 is used for this application (\cite{WANG1999467}).
 
-From the previous section, it is known that that axial strain is nonlinear. This will the make the weak form nonlinear. Thus requiring a requires special treatment. To overcome this issue, the axial stress($\sigma^A$) is let us a known term. The axial stress is constant and homogeneous in the plate. this make the weak form linear.
+From the previous section, it is known that that axial strain is nonlinear. This will the make the weak form nonlinear. Thus requiring a requires special treatment. To overcome this issue, the axial stress($\vect{\sigma}^A$) is let us a known term. The axial stress is constant and homogeneous in the plate. this make the weak form linear.
 
 \begin{equation}
-\sigma^A = \begin{bmatrix}
+\vect{\sigma}^A = \begin{bmatrix}
 \sigma_{11}
 \\
 \sigma_{22}
@@ -254,38 +261,38 @@ For this problem, only $N_y$ is non zero.
 First, the integration over the thickness is taken  
 
 \begin{equation}
-U=\frac{1}{2} \int\int_\Omega \int_{-t/2}^{+t/2} \left(\epsilon^B\right)^T \sigma^B + \left(\epsilon^S\right)^T \sigma^S + \left(\epsilon^A\right)^T \sigma^A dz d \Omega
+U=\frac{1}{2} \int\int_\Omega \int_{-h/2}^{+h/2} \left(\vect{\epsilon}^B\right)^T \vect{\sigma}^B + \left(\vect{\epsilon}^S\right)^T \vect{\sigma}^S + \left(\vect{\epsilon}^A\right)^T \vect{\sigma}^A dz d \Omega
 \end{equation}
 
 Thickness is constant all over the plate and is continuous.
 
 \begin{equation}
-U=\frac{1}{2} \int\int_\Omega \left[ \int_{-h/2}^{+h/2} z^2 dz\right] \kappa^T {D} \kappa 
-+ \left[ \int_{-h/2}^{+h/2} dz\right]\left(\epsilon^S\right)^T {D_c} \epsilon^S 
+U=\frac{1}{2} \int\int_\Omega \left[ \int_{-h/2}^{+h/2} z^2 dz\right] \vect{\kappa}^T {\vect{D}} \vect{\kappa} 
++ \left[ \int_{-h/2}^{+h/2} dz\right]\left(\vect{\epsilon}^S\right)^T {\vect{D_c}} \vect{\epsilon}^S 
 + \left[ \int_{-h/2}^{+h/2} dz\right]
- \left(\epsilon^A\right)^T \sigma^A  d \Omega
+ \left(\vect{\epsilon}^A\right)^T \vect{\sigma}^A  d \Omega
 \end{equation}
 
 
 \begin{equation}
 U=\frac{1}{2} \int\int_\Omega 
-\kappa^T \tilde{D} \kappa 
+\vect{\kappa}^T \tilde{D} \vect{\kappa}
 + 
-\left(\epsilon^S\right)^T \tilde{D_c} \epsilon^S 
+\left(\vect{\epsilon}^S\right)^T \vect{\tilde{D_c}} \vect{\epsilon}S 
 + 
- \left(\epsilon^A\right)^T \tilde{\sigma^A}  d \Omega
+ \left(\vect{\epsilon}^A\right)^T \tilde{\vect{\sigma^A}}  d \Omega
 \end{equation}
 
-where, $\tilde{D}$ = $h^3D$  similarly $\tilde{D}_c$ = $hD_c$ and $\tilde{\sigma^A}=h\sigma^A$. The variation of the potential term gives.
+where, $\vect{\tilde{D}}$ = $h^3\vect{D}$  similarly $\vect{\tilde{D}_c}$ = $h\vect{D_c}$ and $\tilde{\vect{\sigma}^A}=h\vect{\sigma}^A$. The variation of the potential term gives.
 
 
 \begin{equation}\label{eq:vr_PE}
 \delta U=\int\int_\Omega 
-\kappa^T \tilde{D} \delta\kappa 
+\vect{\kappa}^T \vect{\tilde{D}} \delta\vect{\kappa} 
 + 
-\left(\epsilon^S\right)^T \tilde{D_c} \delta\epsilon^S 
+\left(\vect{\epsilon}^S\right)^T \vect{\tilde{D_c}} \delta \vect{\epsilon}^S 
 + 
-w_{,2} \tilde{\sigma^A} \delta w_{,2} d \Omega
+w_{,2}\tilde{\vect{\sigma}^A} \delta w_{,2} d \Omega
 \end{equation}
 
 
@@ -301,7 +308,7 @@ K = \frac{1}{2} \int \int \int_{\Gamma} \mathbf{v}^T\rho\mathbf{v} d\Gamma
 \subsection{Euler - Lagrange formulation}
 
 
-Traditional for solids Lagrangian description of motion is used, which tracks the material point under deformation and moves along with the point. For fluids, Eulerian Description is used. Since the fluid is constantly moving. In Eulerian Description, Property changes at a spatial point is recorded. But for the axially moving plate, in addition to deformation, the plate is moving at a constant axial velocity. To Describe the velocity a form of mixed Euler-Legrange Formulation is selected.[** find ref ** ].
+Traditional for solids, Lagrangian description of motion is used, which tracks the material point under deformation and moves along with the point. For fluids, Eulerian Description is used since the fluid is constantly moving. In Eulerian Description, Property changes at a spatial point is recorded. But for the axially moving plate, in addition to deformation, the plate is moving at a constant axial velocity. To describe the velocity a form of mixed Euler-Legrange formulation is selected (\cite{Moving_beam}).
 
 
 \begin{equation}
@@ -319,33 +326,33 @@ Substituting eq: \ref{eq:v} in eq: \ref{eq:KE} gives
 \begin{equation}
 K=\frac{1}{2} 
 \int \int_\Omega \int_{-\frac{h}{2}}^{\frac{h}{2}} 
-\rho  \dot{u}_i    \dot{u}_i
+\rho \vect{ \dot{u}} ^T    \vect{ \dot{u}}
 +
-\rho  V_2 \dot{u}_i   u_{i,2}
+2 \rho  V_2 \vect{ \dot{u}} ^T   \vect{u}_{,2}
 +
-\rho  V_2^2  u_{i,2}   u_{i,2}
+\rho  V_2^2  (\vect{u}_{,2})^T   \vect{u}_{,2}
 \quad
  dz 
  d\Omega
 \end{equation}
 
-Integrating along the thickness gives
+In here, First term id the acceleration component, second term is the Coriolis and third is the centripetal acceleration components (\cite{JianLi2012}). This makes this equation gyroscopic. Integrating along the thickness gives
 
 
 \begin{equation}
 K=\frac{1}{2} 
 \int \int_\Omega
-\rho  \dot{\tilde{u}}_i  Z_{ij}    \dot{\tilde{u}}_j
+\rho  \vect{\dot{\tilde{u}}}^T  \vect{Z}    \vect{\dot{\tilde{u}}}
 +
-\rho  V_2 \dot{\tilde{u}}_i  Z_{ij}  \tilde{u}_{j,2}
+2 \rho  V_2 \vect{\dot{\tilde{u}}}^T  \vect{Z}     \vect{\tilde{u}}_{,2}
 +
-\rho  V_2^2 \tilde{u}_{i,2}  Z_{ij}  \tilde{u}_{j,2}
+\rho  V_2^2 (\vect{\tilde{u}}_{,2})^T   \vect{Z}      \vect{\tilde{u}}_{,2}
 \quad
  d\Omega
 \end{equation}
 
 \begin{equation}
- Z_{ij}  = **
+ \vect{Z}  = 
  \begin{bmatrix}
 h   &  0 & 0 \\
 0   &  \frac{h^3}{12}& 0 \\
@@ -354,7 +361,7 @@ h   &  0 & 0 \\
 \qquad
 (and)
 \qquad
- \tilde{u}_i  = 
+ \vect{\tilde{u}}  = 
  \begin{bmatrix}
 w   \\
 \theta_x    \\
@@ -364,80 +371,82 @@ w   \\
 
 Finally the variation of the kinetic energy
 \begin{equation}\label{eq:vr_KE}
-\delta K=
+\delta K
+= 
 \int \int_\Omega
-\rho  \dot{\tilde{u}}_i  Z_{ij}   \delta \dot{\tilde{u}}_j
-+ \frac{1}{2} 
-\rho  V_2 \delta \dot{\tilde{u}}_i  Z_{ij}  \tilde{u}_{j,2}
-+ \frac{1}{2} 
-\rho  V_2 \dot{\tilde{u}}_i  Z_{ij} \delta \tilde{u}_{j,2}
+\rho  \vect{\dot{\tilde{u}}}^T  \vect{Z}    \delta \vect{\dot{\tilde{u}}}
 +
-\rho  V_2^2  \tilde{u}_{i,2}  Z_{ij} \delta \tilde{u}_{j,2}
+\rho  V_2 \delta \vect{\dot{\tilde{u}}}^T  \vect{Z}      \vect{\tilde{u}}_{,2}
++
+\rho  V_2 \vect{\dot{\tilde{u}}}^T  \vect{Z}     \delta \vect{\tilde{u}}_{,2}
++ 
+\rho  V_2^2 (\vect{\tilde{u}}_{,2})^T   \vect{Z}      \delta \vect{\tilde{u}}_{,2}
+\quad
  d\Omega
 \end{equation}
 
 
 
 \section{External Work}
-The Transverse distributed forces $q_j$ is applied in the regions in $\Omega_j$. The variation of the work by external force is given as
+The Transverse distributed forces $q_j$ is applied in the regions in $\Omega^j$.$nb$ is the total number of distributed load. The variation of the work by external force is given as
 \begin{equation}\label{eq:vr_W}
-\delta W=\sum_j^{nb} \int_{\Omega_j} q_j \delta \tilde{u}_i  d \Omega_j
+\delta W=\sum_j^{nb} \int_{\Omega^j} q_j \delta \vect{\tilde{u}} \quad  d \Omega^j
 \end{equation}
 
 \section{Final Weak Form}
-Substituting equations  \ref{eq:vr_KE}, \ref{eq:vr_M}, \ref{eq:vr_PE} and \ref{eq:vr_W} in \ref{eq:HAM_P} and integration by parts gives,
-\begin{equation}
-\begin{split}
- \int \int_\Omega 
-\rho \dot{\tilde{u_i}} Z_{ij} \delta \tilde{u_i}
-+
-\rho V_1 \delta {\tilde{u_i}} Z_{ij} \tilde{u}_{j,1} 
-+  
-\rho V_1 {\tilde{u_i}} Z_{ij} \delta \tilde{u}_{j,1}  
- d \Omega  \Big|_{t_0}^{t_1} 
- \\ +
- \int_{t_0}^{t_1} \int \int_\Omega 
--
-\rho \ddot{\tilde{u_i}} Z_{ij} \delta {\tilde{u_j}}
--
-\rho V_1 \delta {\tilde{u_i}} Z_{ij} \dot{\tilde{u}}_{j,1} 
--  
-\rho V_1  \tilde{u_i} Z_{ij} \delta \dot{\tilde{u}}_{j,1} 
-+
-\rho V_1^2 \tilde{u}_{i,1} Z_{ij} \delta \tilde{u}_{j,1}
-\\ 
-- 
-\kappa^T \tilde{D} \delta\kappa 
--
-\left(\epsilon^S\right)^T \tilde{D_c} \delta\epsilon^S 
-- 
- w_{, \alpha} \tilde{\sigma}^A  \delta w_{, \alpha}  d \Omega     
- +   
-\sum_j^{nb} \int_{\Omega_j} q_j \delta \tilde{u}_i  d \Omega_j dt = 0
-\end{split} 
-\end{equation}
+Substituting equations  \ref{eq:vr_KE}, \ref{eq:vr_M}, \ref{eq:vr_PE} and \ref{eq:vr_W} in \ref{eq:HAM_P} and integration by parts gives a equation,
+%\begin{equation}
+%\begin{split}
+% \int \int_\Omega 
+%\rho \dot{\tilde{u_i}} Z_{ij} \delta \tilde{u_i}
+%+
+%\rho V_1 \delta {\tilde{u_i}} Z_{ij} \tilde{u}_{j,1} 
+%+  
+%\rho V_1 {\tilde{u_i}} Z_{ij} \delta \tilde{u}_{j,1}  
+% d \Omega  \Big|_{t_0}^{t_1} 
+% \\ +
+% \int_{t_0}^{t_1} \int \int_\Omega 
+%-
+%\rho \ddot{\tilde{u_i}} Z_{ij} \delta {\tilde{u_j}}
+%-
+%\rho V_1 \delta {\tilde{u_i}} Z_{ij} \dot{\tilde{u}}_{j,1} 
+%-  
+%\rho V_1  \tilde{u_i} Z_{ij} \delta \dot{\tilde{u}}_{j,1} 
+%+
+%\rho V_1^2 \tilde{u}_{i,1} Z_{ij} \delta \tilde{u}_{j,1}
+%\\ 
+%- 
+%\kappa^T \tilde{D} \delta\kappa 
+%-
+%\left(\epsilon^S\right)^T \tilde{D_c} \delta\epsilon^S 
+%- 
+% w_{, \alpha} \tilde{\sigma}^A  \delta w_{, \alpha}  d \Omega     
+% +   
+%\sum_j^{nb} \int_{\Omega_j} q_j \delta \tilde{u}_i  d \Omega_j dt = 0
+%\end{split} 
+%\end{equation}
 
-using the relation \ref{eq:HAM_P_C}, Final weak form is derived as.
+and by using the relation \ref{eq:HAM_P_C}, Final weak form is derived as.
 
 \begin{equation*}
 \begin{split}
 \int \int_\Omega 
-\rho \ddot{\tilde{u_i}} Z_{ij} \delta {\tilde{u_j}}
-+  \frac{1}{2}
-\rho V_1 \delta {\tilde{u_i}} Z_{ij} \dot{\tilde{u}}_{j,1} 
-+ \frac{1}{2}
-\rho V_1  \tilde{u_i} Z_{ij} \delta \dot{\tilde{u}}_{j,1} 
+\rho \vect{\ddot{\tilde{u}}}^T \vect{Z} \delta \vect {{\tilde{u}}}
++  
+\rho V_1 \delta \vect{\tilde{u}} \vect{Z} \vect{\dot{\tilde{u}}}_{,2} 
++ 
+\rho V_1  \vect{\tilde{u}} \vect{Z} \delta \vect{\dot{\tilde{u}}}_{,2} 
 -
-\rho V_1^2 \tilde{u}_{i,1} Z_{ij} \delta \tilde{u}_{j,1}
+\rho V_1^2 \vect{\tilde{u}}_{,2} \vect{Z} \delta \vect{\tilde{u}}_{,2}
 \\ 
 + 
-\kappa^T \tilde{D} \delta\kappa 
+\vect{\kappa}^T \vect{\tilde{D}} \delta \vect{\kappa} 
 +
-\left(\epsilon^S\right)^T \tilde{D_c} \delta\epsilon^S 
+\left(\vect{\epsilon}^S\right)^T \vect{\tilde{D_c}} \delta\vect{\epsilon}^S 
 +
- w_{, \alpha} \tilde{\sigma}^A  \delta w_{, \alpha}  d \Omega     
+ w_{, 2} \vect{\tilde{\sigma}}^A  \delta w_{, 2}  d \Omega     
  =  
-\sum_j^{nb} \int_{\Omega_j} q_j \delta \tilde{u}_i  d \Omega_j 
+\sum_j^{nb} \int_{\Omega^j} q_j \delta \vect{\tilde{u}}  d \Omega^j 
 \end{split} 
 \end{equation*}
 
